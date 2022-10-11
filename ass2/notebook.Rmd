@@ -27,6 +27,7 @@ head(df)
 
 ```{r}
 xtabs(~ df$Survival + df$Sex)
+odds.ratio(df$Survival + df$Sex)
 ```
 
 ```{r}
@@ -53,16 +54,18 @@ summary(log.tibiotarsus)
 summary(log.skull)
 summary(log.sternum)
 
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
+# Sex         0.3190 0.0786 *
+# Len         0.00432 0.00449 **
+# Alar        0.441 0.432 
+# Weight      0.0133 0.0146 **
+# Beak        0.449 0.440
+# Humerus     0.0363 0.0344 **
+# Femur       0.121 0.116 **
+# Tibiotarsus 0.183 0.175 **
+# Skull       0.695 0.683
+# Sternum     0.121 0.114 **
+
+# len, weight, humerus, femur, tibiotarsus, sternum
 ```
 
 ```{r}
@@ -75,6 +78,8 @@ plot(df$AlarExtent, df$TotalLength)
 plot(df$Femur, df$Humerus)
 plot(df$Femur, df$Tibiotarsus)
 plot(df$Humerus, df$Tibiotarsus)
+
+# above p=0.7
 ## alar-length 0.69, femur-humerus 0.82, femur-tibiotarsus 0.81, humerus-tibiotarsus 0.75
 ```
 

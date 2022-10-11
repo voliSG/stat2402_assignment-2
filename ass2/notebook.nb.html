@@ -276,20 +276,18 @@ df$Sex &lt;- as.factor(df$Sex)</code></pre>
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueHRhYnMofiBkZiRTdXJ2aXZhbCArIGRmJFNleClcbmBgYCJ9 -->
-<pre class="r"><code>xtabs(~ df$Survival + df$Sex)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShhYmQpXG5cbmBgYCJ9 -->
+<pre class="r"><code>library(abd)
+</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICBkZiRTZXhcbmRmJFN1cnZpdmFsICBmICBtXG4gICAgICAgICAgMCAyOCAzNlxuICAgICAgICAgIDEgMjEgNTFcbiJ9 -->
-<pre><code>           df$Sex
-df$Survival  f  m
-          0 28 36
-          1 21 51</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gbGlicmFyeShhYmQpIDogdGhlcmUgaXMgbm8gcGFja2FnZSBjYWxsZWQg4oCYYWJk4oCZXG4ifQ== -->
+<pre><code>Error in library(abd) : there is no package called ‘abd’</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB1bml2YXJpYWJsZSBhbmFseXNpc1xubG9nLnNleCAgICAgICAgICA9IGdsbShTdXJ2aXZhbCB+IFNleCAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZilcbmxvZy5sZW4gICAgICAgICAgPSBnbG0oU3Vydml2YWwgfiBUb3RhbExlbmd0aCAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZilcbmxvZy5hbGFyICAgICAgICAgPSBnbG0oU3Vydml2YWwgfiBBbGFyRXh0ZW50ICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKVxubG9nLndlaWdodCAgICAgICA9IGdsbShTdXJ2aXZhbCB+IFdlaWdodCAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZilcbmxvZy5iZWFrICAgICAgICAgPSBnbG0oU3Vydml2YWwgfiBCZWFrSGVhZCAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZilcbmxvZy5odW1lcnVzICAgICAgPSBnbG0oU3Vydml2YWwgfiBIdW1lcnVzICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKVxubG9nLmZlbXVyICAgICAgICA9IGdsbShTdXJ2aXZhbCB+IEZlbXVyICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKVxubG9nLnRpYmlvdGFyc3VzICA9IGdsbShTdXJ2aXZhbCB+IFRpYmlvdGFyc3VzICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKVxubG9nLnNrdWxsICAgICAgICA9IGdsbShTdXJ2aXZhbCB+IFNrdWxsV2lkdGggLCBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gbG9naXQpLGRhdGE9ZGYpXG5sb2cuc3Rlcm51bSAgICAgID0gZ2xtKFN1cnZpdmFsIH4gU3Rlcm51bSAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZilcblxuc3VtbWFyeShsb2cuc2V4KVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB1bml2YXJpYWJsZSBhbmFseXNpc1xubG9nLnNleCAgICAgICAgICA9IGdsbShTdXJ2aXZhbCB+IFNleCAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZilcbmxvZy5sZW4gICAgICAgICAgPSBnbG0oU3Vydml2YWwgfiBUb3RhbExlbmd0aCAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZilcbmxvZy5hbGFyICAgICAgICAgPSBnbG0oU3Vydml2YWwgfiBBbGFyRXh0ZW50ICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKVxubG9nLndlaWdodCAgICAgICA9IGdsbShTdXJ2aXZhbCB+IFdlaWdodCAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZilcbmxvZy5iZWFrICAgICAgICAgPSBnbG0oU3Vydml2YWwgfiBCZWFrSGVhZCAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZilcbmxvZy5odW1lcnVzICAgICAgPSBnbG0oU3Vydml2YWwgfiBIdW1lcnVzICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKVxubG9nLmZlbXVyICAgICAgICA9IGdsbShTdXJ2aXZhbCB+IEZlbXVyICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKVxubG9nLnRpYmlvdGFyc3VzICA9IGdsbShTdXJ2aXZhbCB+IFRpYmlvdGFyc3VzICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKVxubG9nLnNrdWxsICAgICAgICA9IGdsbShTdXJ2aXZhbCB+IFNrdWxsV2lkdGggLCBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gbG9naXQpLGRhdGE9ZGYpXG5sb2cuc3Rlcm51bSAgICAgID0gZ2xtKFN1cnZpdmFsIH4gU3Rlcm51bSAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZilcblxuc3VtbWFyeShsb2cuc2V4KVxuc3VtbWFyeShsb2cubGVuKSAgXG5zdW1tYXJ5KGxvZy5hbGFyKVxuc3VtbWFyeShsb2cud2VpZ2h0KVxuc3VtbWFyeShsb2cuYmVhaylcbnN1bW1hcnkobG9nLmh1bWVydXMpXG5zdW1tYXJ5KGxvZy5mZW11cilcbnN1bW1hcnkobG9nLnRpYmlvdGFyc3VzKVxuc3VtbWFyeShsb2cuc2t1bGwpXG5zdW1tYXJ5KGxvZy5zdGVybnVtKVxuXG4jIFNleCAgICAgICAgIDAuMzE5MCAwLjA3ODYgKlxuIyBMZW4gICAgICAgICAwLjAwNDMyIDAuMDA0NDkgKipcbiMgQWxhciAgICAgICAgMC40NDEgMC40MzIgXG4jIFdlaWdodCAgICAgIDAuMDEzMyAwLjAxNDYgKipcbiMgQmVhayAgICAgICAgMC40NDkgMC40NDBcbiMgSHVtZXJ1cyAgICAgMC4wMzYzIDAuMDM0NCAqKlxuIyBGZW11ciAgICAgICAwLjEyMSAwLjExNiAqKlxuIyBUaWJpb3RhcnN1cyAwLjE4MyAwLjE3NSAqKlxuIyBTa3VsbCAgICAgICAwLjY5NSAwLjY4M1xuIyBTdGVybnVtICAgICAwLjEyMSAwLjExNCAqKlxuXG4jIGxlbiwgd2VpZ2h0LCBodW1lcnVzLCBmZW11ciwgdGliaW90YXJzdXMsIHN0ZXJudW1cbmBgYCJ9 -->
 <pre class="r"><code># univariable analysis
 log.sex          = glm(Survival ~ Sex , family = binomial(link = logit),data=df)
 log.len          = glm(Survival ~ TotalLength , family = binomial(link = logit),data=df)
@@ -302,289 +300,50 @@ log.tibiotarsus  = glm(Survival ~ Tibiotarsus , family = binomial(link = logit),
 log.skull        = glm(Survival ~ SkullWidth , family = binomial(link = logit),data=df)
 log.sternum      = glm(Survival ~ Sternum , family = binomial(link = logit),data=df)
 
-summary(log.sex)</code></pre>
+summary(log.sex)
+summary(log.len)  
+summary(log.alar)
+summary(log.weight)
+summary(log.beak)
+summary(log.humerus)
+summary(log.femur)
+summary(log.tibiotarsus)
+summary(log.skull)
+summary(log.sternum)
+
+# Sex         0.3190 0.0786 *
+# Len         0.00432 0.00449 **
+# Alar        0.441 0.432 
+# Weight      0.0133 0.0146 **
+# Beak        0.449 0.440
+# Humerus     0.0363 0.0344 **
+# Femur       0.121 0.116 **
+# Tibiotarsus 0.183 0.175 **
+# Skull       0.695 0.683
+# Sternum     0.121 0.114 **
+
+# len, weight, humerus, femur, tibiotarsus, sternum</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IFNleCwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSwgXG4gICAgZGF0YSA9IGRmKVxuXG5EZXZpYW5jZSBSZXNpZHVhbHM6IFxuICAgTWluICAgICAgMVEgIE1lZGlhbiAgICAgIDNRICAgICBNYXggIFxuLTEuMzI4ICAtMS4zMjggICAxLjAzNCAgIDEuMDM0ICAgMS4zMDIgIFxuXG5Db2VmZmljaWVudHM6XG4gICAgICAgICAgICBFc3RpbWF0ZSBTdGQuIEVycm9yIHogdmFsdWUgUHIoPnx6fCkgIFxuKEludGVyY2VwdCkgIC0wLjI4NzcgICAgIDAuMjg4NyAgLTAuOTk3ICAgMC4zMTkwICBcblNleG0gICAgICAgICAgMC42MzYwICAgICAwLjM2MTYgICAxLjc1OSAgIDAuMDc4NiAuXG4tLS1cblNpZ25pZi4gY29kZXM6ICAwIOKAmCoqKuKAmSAwLjAwMSDigJgqKuKAmSAwLjAxIOKAmCrigJkgMC4wNSDigJgu4oCZIDAuMSDigJgg4oCZIDFcblxuKERpc3BlcnNpb24gcGFyYW1ldGVyIGZvciBiaW5vbWlhbCBmYW1pbHkgdGFrZW4gdG8gYmUgMSlcblxuICAgIE51bGwgZGV2aWFuY2U6IDE4OC4wNyAgb24gMTM1ICBkZWdyZWVzIG9mIGZyZWVkb21cblJlc2lkdWFsIGRldmlhbmNlOiAxODQuOTMgIG9uIDEzNCAgZGVncmVlcyBvZiBmcmVlZG9tXG5BSUM6IDE4OC45M1xuXG5OdW1iZXIgb2YgRmlzaGVyIFNjb3JpbmcgaXRlcmF0aW9uczogNFxuIn0= -->
-<pre><code>
-Call:
-glm(formula = Survival ~ Sex, family = binomial(link = logit), 
-    data = df)
-
-Deviance Residuals: 
-   Min      1Q  Median      3Q     Max  
--1.328  -1.328   1.034   1.034   1.302  
-
-Coefficients:
-            Estimate Std. Error z value Pr(&gt;|z|)  
-(Intercept)  -0.2877     0.2887  -0.997   0.3190  
-Sexm          0.6360     0.3616   1.759   0.0786 .
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 188.07  on 135  degrees of freedom
-Residual deviance: 184.93  on 134  degrees of freedom
-AIC: 188.93
-
-Number of Fisher Scoring iterations: 4</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShsb2cubGVuKVxuYGBgIn0= -->
-<pre class="r"><code>summary(log.len)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IFRvdGFsTGVuZ3RoLCBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gbG9naXQpLCBcbiAgICBkYXRhID0gZGYpXG5cbkRldmlhbmNlIFJlc2lkdWFsczogXG4gICAgTWluICAgICAgIDFRICAgTWVkaWFuICAgICAgIDNRICAgICAgTWF4ICBcbi0xLjczMjEgIC0xLjEzOTYgICAwLjc4MzQgICAxLjA5MDcgICAxLjU0NTIgIFxuXG5Db2VmZmljaWVudHM6XG4gICAgICAgICAgICBFc3RpbWF0ZSBTdGQuIEVycm9yIHogdmFsdWUgUHIoPnx6fCkgICBcbihJbnRlcmNlcHQpIDIzLjgzNDkwICAgIDguMzUxMjcgICAyLjg1NCAgMC4wMDQzMiAqKlxuVG90YWxMZW5ndGggLTAuMTQ4NjAgICAgMC4wNTIyOSAgLTIuODQyICAwLjAwNDQ5ICoqXG4tLS1cblNpZ25pZi4gY29kZXM6ICAwIOKAmCoqKuKAmSAwLjAwMSDigJgqKuKAmSAwLjAxIOKAmCrigJkgMC4wNSDigJgu4oCZIDAuMSDigJgg4oCZIDFcblxuKERpc3BlcnNpb24gcGFyYW1ldGVyIGZvciBiaW5vbWlhbCBmYW1pbHkgdGFrZW4gdG8gYmUgMSlcblxuICAgIE51bGwgZGV2aWFuY2U6IDE4OC4wNyAgb24gMTM1ICBkZWdyZWVzIG9mIGZyZWVkb21cblJlc2lkdWFsIGRldmlhbmNlOiAxNzkuMzUgIG9uIDEzNCAgZGVncmVlcyBvZiBmcmVlZG9tXG5BSUM6IDE4My4zNVxuXG5OdW1iZXIgb2YgRmlzaGVyIFNjb3JpbmcgaXRlcmF0aW9uczogNFxuIn0= -->
-<pre><code>
-Call:
-glm(formula = Survival ~ TotalLength, family = binomial(link = logit), 
-    data = df)
-
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.7321  -1.1396   0.7834   1.0907   1.5452  
-
-Coefficients:
-            Estimate Std. Error z value Pr(&gt;|z|)   
-(Intercept) 23.83490    8.35127   2.854  0.00432 **
-TotalLength -0.14860    0.05229  -2.842  0.00449 **
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 188.07  on 135  degrees of freedom
-Residual deviance: 179.35  on 134  degrees of freedom
-AIC: 183.35
-
-Number of Fisher Scoring iterations: 4</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShsb2cuYWxhcilcbmBgYCJ9 -->
-<pre class="r"><code>summary(log.alar)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IEFsYXJFeHRlbnQsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksIFxuICAgIGRhdGEgPSBkZilcblxuRGV2aWFuY2UgUmVzaWR1YWxzOiBcbiAgIE1pbiAgICAgIDFRICBNZWRpYW4gICAgICAzUSAgICAgTWF4ICBcbi0xLjM0NSAgLTEuMjI2ICAgMS4wNDkgICAxLjExOSAgIDEuMjM0ICBcblxuQ29lZmZpY2llbnRzOlxuICAgICAgICAgICAgRXN0aW1hdGUgU3RkLiBFcnJvciB6IHZhbHVlIFByKD58enwpXG4oSW50ZXJjZXB0KSAtNS45MzIyMSAgICA3LjY5MzA4ICAtMC43NzEgICAgMC40NDFcbkFsYXJFeHRlbnQgICAwLjAyNDY4ICAgIDAuMDMxMzcgICAwLjc4NyAgICAwLjQzMlxuXG4oRGlzcGVyc2lvbiBwYXJhbWV0ZXIgZm9yIGJpbm9taWFsIGZhbWlseSB0YWtlbiB0byBiZSAxKVxuXG4gICAgTnVsbCBkZXZpYW5jZTogMTg4LjA3ICBvbiAxMzUgIGRlZ3JlZXMgb2YgZnJlZWRvbVxuUmVzaWR1YWwgZGV2aWFuY2U6IDE4Ny40NCAgb24gMTM0ICBkZWdyZWVzIG9mIGZyZWVkb21cbkFJQzogMTkxLjQ0XG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiAzXG4ifQ== -->
-<pre><code>
-Call:
-glm(formula = Survival ~ AlarExtent, family = binomial(link = logit), 
-    data = df)
-
-Deviance Residuals: 
-   Min      1Q  Median      3Q     Max  
--1.345  -1.226   1.049   1.119   1.234  
-
-Coefficients:
-            Estimate Std. Error z value Pr(&gt;|z|)
-(Intercept) -5.93221    7.69308  -0.771    0.441
-AlarExtent   0.02468    0.03137   0.787    0.432
-
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 188.07  on 135  degrees of freedom
-Residual deviance: 187.44  on 134  degrees of freedom
-AIC: 191.44
-
-Number of Fisher Scoring iterations: 3</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShsb2cud2VpZ2h0KVxuYGBgIn0= -->
-<pre class="r"><code>summary(log.weight)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IFdlaWdodCwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSwgXG4gICAgZGF0YSA9IGRmKVxuXG5EZXZpYW5jZSBSZXNpZHVhbHM6IFxuICAgIE1pbiAgICAgICAxUSAgIE1lZGlhbiAgICAgICAzUSAgICAgIE1heCAgXG4tMS42MzMxICAtMS4xNjU0ICAgMC44NTc5ICAgMS4wNzkxICAgMS40NjI2ICBcblxuQ29lZmZpY2llbnRzOlxuICAgICAgICAgICAgRXN0aW1hdGUgU3RkLiBFcnJvciB6IHZhbHVlIFByKD58enwpICBcbihJbnRlcmNlcHQpICAgOC4wNDU2ICAgICAzLjI1MTYgICAyLjQ3NCAgIDAuMDEzMyAqXG5XZWlnaHQgICAgICAgLTAuMzEwNSAgICAgMC4xMjcyICAtMi40NDEgICAwLjAxNDYgKlxuLS0tXG5TaWduaWYuIGNvZGVzOiAgMCDigJgqKirigJkgMC4wMDEg4oCYKirigJkgMC4wMSDigJgq4oCZIDAuMDUg4oCYLuKAmSAwLjEg4oCYIOKAmSAxXG5cbihEaXNwZXJzaW9uIHBhcmFtZXRlciBmb3IgYmlub21pYWwgZmFtaWx5IHRha2VuIHRvIGJlIDEpXG5cbiAgICBOdWxsIGRldmlhbmNlOiAxODguMDcgIG9uIDEzNSAgZGVncmVlcyBvZiBmcmVlZG9tXG5SZXNpZHVhbCBkZXZpYW5jZTogMTgxLjU4ICBvbiAxMzQgIGRlZ3JlZXMgb2YgZnJlZWRvbVxuQUlDOiAxODUuNThcblxuTnVtYmVyIG9mIEZpc2hlciBTY29yaW5nIGl0ZXJhdGlvbnM6IDRcbiJ9 -->
-<pre><code>
-Call:
-glm(formula = Survival ~ Weight, family = binomial(link = logit), 
-    data = df)
-
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.6331  -1.1654   0.8579   1.0791   1.4626  
-
-Coefficients:
-            Estimate Std. Error z value Pr(&gt;|z|)  
-(Intercept)   8.0456     3.2516   2.474   0.0133 *
-Weight       -0.3105     0.1272  -2.441   0.0146 *
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 188.07  on 135  degrees of freedom
-Residual deviance: 181.58  on 134  degrees of freedom
-AIC: 185.58
-
-Number of Fisher Scoring iterations: 4</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShsb2cuYmVhaylcbmBgYCJ9 -->
-<pre class="r"><code>summary(log.beak)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IEJlYWtIZWFkLCBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gbG9naXQpLCBcbiAgICBkYXRhID0gZGYpXG5cbkRldmlhbmNlIFJlc2lkdWFsczogXG4gICBNaW4gICAgICAxUSAgTWVkaWFuICAgICAgM1EgICAgIE1heCAgXG4tMS4zODEgIC0xLjIyMiAgIDEuMDU1ICAgMS4xMjYgICAxLjI3MiAgXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgIEVzdGltYXRlIFN0ZC4gRXJyb3IgeiB2YWx1ZSBQcig+fHp8KVxuKEludGVyY2VwdCkgIC01LjkwMDQgICAgIDcuNzkyNCAgLTAuNzU3ICAgIDAuNDQ5XG5CZWFrSGVhZCAgICAgIDAuMTkwNiAgICAgMC4yNDY4ICAgMC43NzIgICAgMC40NDBcblxuKERpc3BlcnNpb24gcGFyYW1ldGVyIGZvciBiaW5vbWlhbCBmYW1pbHkgdGFrZW4gdG8gYmUgMSlcblxuICAgIE51bGwgZGV2aWFuY2U6IDE4OC4wNyAgb24gMTM1ICBkZWdyZWVzIG9mIGZyZWVkb21cblJlc2lkdWFsIGRldmlhbmNlOiAxODcuNDcgIG9uIDEzNCAgZGVncmVlcyBvZiBmcmVlZG9tXG5BSUM6IDE5MS40N1xuXG5OdW1iZXIgb2YgRmlzaGVyIFNjb3JpbmcgaXRlcmF0aW9uczogM1xuIn0= -->
-<pre><code>
-Call:
-glm(formula = Survival ~ BeakHead, family = binomial(link = logit), 
-    data = df)
-
-Deviance Residuals: 
-   Min      1Q  Median      3Q     Max  
--1.381  -1.222   1.055   1.126   1.272  
-
-Coefficients:
-            Estimate Std. Error z value Pr(&gt;|z|)
-(Intercept)  -5.9004     7.7924  -0.757    0.449
-BeakHead      0.1906     0.2468   0.772    0.440
-
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 188.07  on 135  degrees of freedom
-Residual deviance: 187.47  on 134  degrees of freedom
-AIC: 191.47
-
-Number of Fisher Scoring iterations: 3</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShsb2cuaHVtZXJ1cylcbmBgYCJ9 -->
-<pre class="r"><code>summary(log.humerus)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IEh1bWVydXMsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksIFxuICAgIGRhdGEgPSBkZilcblxuRGV2aWFuY2UgUmVzaWR1YWxzOiBcbiAgICBNaW4gICAgICAgMVEgICBNZWRpYW4gICAgICAgM1EgICAgICBNYXggIFxuLTEuNTgzNiAgLTEuMTk1MyAgIDAuOTAwMyAgIDEuMTE0NCAgIDEuNDY3MiAgXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgIEVzdGltYXRlIFN0ZC4gRXJyb3IgeiB2YWx1ZSBQcig+fHp8KSAgXG4oSW50ZXJjZXB0KSAgLTEyLjAzMiAgICAgIDUuNzQ2ICAtMi4wOTQgICAwLjAzNjMgKlxuSHVtZXJ1cyAgICAgICAxNi42MDMgICAgICA3Ljg0OSAgIDIuMTE1ICAgMC4wMzQ0ICpcbi0tLVxuU2lnbmlmLiBjb2RlczogIDAg4oCYKioq4oCZIDAuMDAxIOKAmCoq4oCZIDAuMDEg4oCYKuKAmSAwLjA1IOKAmC7igJkgMC4xIOKAmCDigJkgMVxuXG4oRGlzcGVyc2lvbiBwYXJhbWV0ZXIgZm9yIGJpbm9taWFsIGZhbWlseSB0YWtlbiB0byBiZSAxKVxuXG4gICAgTnVsbCBkZXZpYW5jZTogMTg4LjA3ICBvbiAxMzUgIGRlZ3JlZXMgb2YgZnJlZWRvbVxuUmVzaWR1YWwgZGV2aWFuY2U6IDE4My4zNiAgb24gMTM0ICBkZWdyZWVzIG9mIGZyZWVkb21cbkFJQzogMTg3LjM2XG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiA0XG4ifQ== -->
-<pre><code>
-Call:
-glm(formula = Survival ~ Humerus, family = binomial(link = logit), 
-    data = df)
-
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.5836  -1.1953   0.9003   1.1144   1.4672  
-
-Coefficients:
-            Estimate Std. Error z value Pr(&gt;|z|)  
-(Intercept)  -12.032      5.746  -2.094   0.0363 *
-Humerus       16.603      7.849   2.115   0.0344 *
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 188.07  on 135  degrees of freedom
-Residual deviance: 183.36  on 134  degrees of freedom
-AIC: 187.36
-
-Number of Fisher Scoring iterations: 4</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShsb2cuZmVtdXIpXG5gYGAifQ== -->
-<pre class="r"><code>summary(log.femur)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IEZlbXVyLCBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gbG9naXQpLCBcbiAgICBkYXRhID0gZGYpXG5cbkRldmlhbmNlIFJlc2lkdWFsczogXG4gICAgTWluICAgICAgIDFRICAgTWVkaWFuICAgICAgIDNRICAgICAgTWF4ICBcbi0xLjUwMzggIC0xLjIwODYgICAwLjk2NzQgICAxLjEyMzYgICAxLjQyNzggIFxuXG5Db2VmZmljaWVudHM6XG4gICAgICAgICAgICBFc3RpbWF0ZSBTdGQuIEVycm9yIHogdmFsdWUgUHIoPnx6fClcbihJbnRlcmNlcHQpICAgLTguMDkxICAgICAgNS4yMjAgIC0xLjU1MCAgICAwLjEyMVxuRmVtdXIgICAgICAgICAxMS41MTQgICAgICA3LjMxOSAgIDEuNTczICAgIDAuMTE2XG5cbihEaXNwZXJzaW9uIHBhcmFtZXRlciBmb3IgYmlub21pYWwgZmFtaWx5IHRha2VuIHRvIGJlIDEpXG5cbiAgICBOdWxsIGRldmlhbmNlOiAxODguMDcgIG9uIDEzNSAgZGVncmVlcyBvZiBmcmVlZG9tXG5SZXNpZHVhbCBkZXZpYW5jZTogMTg1LjUzICBvbiAxMzQgIGRlZ3JlZXMgb2YgZnJlZWRvbVxuQUlDOiAxODkuNTNcblxuTnVtYmVyIG9mIEZpc2hlciBTY29yaW5nIGl0ZXJhdGlvbnM6IDRcbiJ9 -->
-<pre><code>
-Call:
-glm(formula = Survival ~ Femur, family = binomial(link = logit), 
-    data = df)
-
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.5038  -1.2086   0.9674   1.1236   1.4278  
-
-Coefficients:
-            Estimate Std. Error z value Pr(&gt;|z|)
-(Intercept)   -8.091      5.220  -1.550    0.121
-Femur         11.514      7.319   1.573    0.116
-
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 188.07  on 135  degrees of freedom
-Residual deviance: 185.53  on 134  degrees of freedom
-AIC: 189.53
-
-Number of Fisher Scoring iterations: 4</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShsb2cudGliaW90YXJzdXMpXG5gYGAifQ== -->
-<pre class="r"><code>summary(log.tibiotarsus)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IFRpYmlvdGFyc3VzLCBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gbG9naXQpLCBcbiAgICBkYXRhID0gZGYpXG5cbkRldmlhbmNlIFJlc2lkdWFsczogXG4gICAgTWluICAgICAgIDFRICAgTWVkaWFuICAgICAgIDNRICAgICAgTWF4ICBcbi0xLjQ3MDYgIC0xLjIwMjMgICAwLjk5NzkgICAxLjEwNzQgICAxLjQ0MDYgIFxuXG5Db2VmZmljaWVudHM6XG4gICAgICAgICAgICBFc3RpbWF0ZSBTdGQuIEVycm9yIHogdmFsdWUgUHIoPnx6fClcbihJbnRlcmNlcHQpICAgLTYuNTMyICAgICAgNC45MDUgIC0xLjMzMiAgICAwLjE4M1xuVGliaW90YXJzdXMgICAgNS44NjcgICAgICA0LjMyNSAgIDEuMzU3ICAgIDAuMTc1XG5cbihEaXNwZXJzaW9uIHBhcmFtZXRlciBmb3IgYmlub21pYWwgZmFtaWx5IHRha2VuIHRvIGJlIDEpXG5cbiAgICBOdWxsIGRldmlhbmNlOiAxODguMDcgIG9uIDEzNSAgZGVncmVlcyBvZiBmcmVlZG9tXG5SZXNpZHVhbCBkZXZpYW5jZTogMTg2LjE4ICBvbiAxMzQgIGRlZ3JlZXMgb2YgZnJlZWRvbVxuQUlDOiAxOTAuMThcblxuTnVtYmVyIG9mIEZpc2hlciBTY29yaW5nIGl0ZXJhdGlvbnM6IDRcbiJ9 -->
-<pre><code>
-Call:
-glm(formula = Survival ~ Tibiotarsus, family = binomial(link = logit), 
-    data = df)
-
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.4706  -1.2023   0.9979   1.1074   1.4406  
-
-Coefficients:
-            Estimate Std. Error z value Pr(&gt;|z|)
-(Intercept)   -6.532      4.905  -1.332    0.183
-Tibiotarsus    5.867      4.325   1.357    0.175
-
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 188.07  on 135  degrees of freedom
-Residual deviance: 186.18  on 134  degrees of freedom
-AIC: 190.18
-
-Number of Fisher Scoring iterations: 4</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShsb2cuc2t1bGwpXG5gYGAifQ== -->
-<pre class="r"><code>summary(log.skull)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IFNrdWxsV2lkdGgsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksIFxuICAgIGRhdGEgPSBkZilcblxuRGV2aWFuY2UgUmVzaWR1YWxzOiBcbiAgIE1pbiAgICAgIDFRICBNZWRpYW4gICAgICAzUSAgICAgTWF4ICBcbi0xLjMwNSAgLTEuMjI3ICAgMS4wNzQgICAxLjEyOSAgIDEuMTgyICBcblxuQ29lZmZpY2llbnRzOlxuICAgICAgICAgICAgRXN0aW1hdGUgU3RkLiBFcnJvciB6IHZhbHVlIFByKD58enwpXG4oSW50ZXJjZXB0KSAgIC0yLjcyMSAgICAgIDYuOTQ0ICAtMC4zOTIgICAgMC42OTVcblNrdWxsV2lkdGggICAgIDQuNzEyICAgICAxMS41MjMgICAwLjQwOSAgICAwLjY4M1xuXG4oRGlzcGVyc2lvbiBwYXJhbWV0ZXIgZm9yIGJpbm9taWFsIGZhbWlseSB0YWtlbiB0byBiZSAxKVxuXG4gICAgTnVsbCBkZXZpYW5jZTogMTg4LjA3ICBvbiAxMzUgIGRlZ3JlZXMgb2YgZnJlZWRvbVxuUmVzaWR1YWwgZGV2aWFuY2U6IDE4Ny45MCAgb24gMTM0ICBkZWdyZWVzIG9mIGZyZWVkb21cbkFJQzogMTkxLjlcblxuTnVtYmVyIG9mIEZpc2hlciBTY29yaW5nIGl0ZXJhdGlvbnM6IDNcbiJ9 -->
-<pre><code>
-Call:
-glm(formula = Survival ~ SkullWidth, family = binomial(link = logit), 
-    data = df)
-
-Deviance Residuals: 
-   Min      1Q  Median      3Q     Max  
--1.305  -1.227   1.074   1.129   1.182  
-
-Coefficients:
-            Estimate Std. Error z value Pr(&gt;|z|)
-(Intercept)   -2.721      6.944  -0.392    0.695
-SkullWidth     4.712     11.523   0.409    0.683
-
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 188.07  on 135  degrees of freedom
-Residual deviance: 187.90  on 134  degrees of freedom
-AIC: 191.9
-
-Number of Fisher Scoring iterations: 3</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShsb2cuc3Rlcm51bSlcbmBgYCJ9 -->
-<pre class="r"><code>summary(log.sternum)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IFN0ZXJudW0sIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksIFxuICAgIGRhdGEgPSBkZilcblxuRGV2aWFuY2UgUmVzaWR1YWxzOiBcbiAgICBNaW4gICAgICAgMVEgICBNZWRpYW4gICAgICAgM1EgICAgICBNYXggIFxuLTEuNDY1NiAgLTEuMjA3OCAgIDAuOTYzOSAgIDEuMTA5OSAgIDEuMzM5MyAgXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgIEVzdGltYXRlIFN0ZC4gRXJyb3IgeiB2YWx1ZSBQcig+fHp8KVxuKEludGVyY2VwdCkgICAtNS43OTkgICAgICAzLjc0MiAgLTEuNTUwICAgIDAuMTIxXG5TdGVybnVtICAgICAgICA3LjA0NyAgICAgIDQuNDU0ICAgMS41ODIgICAgMC4xMTRcblxuKERpc3BlcnNpb24gcGFyYW1ldGVyIGZvciBiaW5vbWlhbCBmYW1pbHkgdGFrZW4gdG8gYmUgMSlcblxuICAgIE51bGwgZGV2aWFuY2U6IDE4OC4wNyAgb24gMTM1ICBkZWdyZWVzIG9mIGZyZWVkb21cblJlc2lkdWFsIGRldmlhbmNlOiAxODUuNTAgIG9uIDEzNCAgZGVncmVlcyBvZiBmcmVlZG9tXG5BSUM6IDE4OS41XG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiA0XG4ifQ== -->
-<pre><code>
-Call:
-glm(formula = Survival ~ Sternum, family = binomial(link = logit), 
-    data = df)
-
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.4656  -1.2078   0.9639   1.1099   1.3393  
-
-Coefficients:
-            Estimate Std. Error z value Pr(&gt;|z|)
-(Intercept)   -5.799      3.742  -1.550    0.121
-Sternum        7.047      4.454   1.582    0.114
-
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 188.07  on 135  degrees of freedom
-Residual deviance: 185.50  on 134  degrees of freedom
-AIC: 189.5
-
-Number of Fisher Scoring iterations: 4</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2ZpbmQgY29ycmVsYXRlZCBmYWN0b3JzXG5kZi5jb3IgPC0gc3Vic2V0KGRmLCBzZWxlY3QgPSAtYyhTdXJ2aXZhbCwgU2V4KSlcbnJlcyA8LSBjb3IoZGYuY29yKVxucm91bmQocmVzLCAyKVxuXG5wbG90KGRmJEFsYXJFeHRlbnQsIGRmJFRvdGFsTGVuZ3RoKVxucGxvdChkZiRGZW11ciwgZGYkSHVtZXJ1cylcbnBsb3QoZGYkRmVtdXIsIGRmJFRpYmlvdGFyc3VzKVxucGxvdChkZiRIdW1lcnVzLCBkZiRUaWJpb3RhcnN1cylcbiMjIGFsYXItbGVuZ3RoIDAuNjksIGZlbXVyLWh1bWVydXMgMC44MiwgZmVtdXItdGliaW90YXJzdXMgMC44MSwgaHVtZXJ1cy10aWJpb3RhcnN1cyAwLjc1XG5gYGAifQ== -->
-<pre class="r"><code>#find correlated factors
-df.cor &lt;- subset(df, select = -c(Survival, Sex))
-res &lt;- cor(df.cor)
-round(res, 2)
-
-plot(df$AlarExtent, df$TotalLength)
-plot(df$Femur, df$Humerus)
-plot(df$Femur, df$Tibiotarsus)
-plot(df$Humerus, df$Tibiotarsus)
-## alar-length 0.69, femur-humerus 0.82, femur-tibiotarsus 0.81, humerus-tibiotarsus 0.75</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucm91bmQocmVzLCAyKVxuXG5gYGAifQ== -->
+<pre class="r"><code>round(res, 2)
+</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgVG90YWxMZW5ndGggQWxhckV4dGVudCBXZWlnaHQgQmVha0hlYWQgSHVtZXJ1cyBGZW11ciBUaWJpb3RhcnN1cyBTa3VsbFdpZHRoIFN0ZXJudW1cblRvdGFsTGVuZ3RoICAgICAgICAxLjAwICAgICAgIDAuNjkgICAwLjU4ICAgICAwLjQ3ICAgIDAuNDggIDAuNDQgICAgICAgIDAuMzggICAgICAgMC40NCAgICAwLjUwXG5BbGFyRXh0ZW50ICAgICAgICAgMC42OSAgICAgICAxLjAwICAgMC41NyAgICAgMC41MCAgICAwLjY4ICAwLjU4ICAgICAgICAwLjUzICAgICAgIDAuNDMgICAgMC41OFxuV2VpZ2h0ICAgICAgICAgICAgIDAuNTggICAgICAgMC41NyAgIDEuMDAgICAgIDAuNTIgICAgMC41MiAgMC40NCAgICAgICAgMC40NSAgICAgICAwLjQ3ICAgIDAuNTFcbkJlYWtIZWFkICAgICAgICAgICAwLjQ3ICAgICAgIDAuNTAgICAwLjUyICAgICAxLjAwICAgIDAuNjIgIDAuNjIgICAgICAgIDAuNTggICAgICAgMC41MyAgICAwLjQ5XG5IdW1lcnVzICAgICAgICAgICAgMC40OCAgICAgICAwLjY4ICAgMC41MiAgICAgMC42MiAgICAxLjAwICAwLjgyICAgICAgICAwLjc1ICAgICAgIDAuNTEgICAgMC41NVxuRmVtdXIgICAgICAgICAgICAgIDAuNDQgICAgICAgMC41OCAgIDAuNDQgICAgIDAuNjIgICAgMC44MiAgMS4wMCAgICAgICAgMC44MSAgICAgICAwLjUyICAgIDAuNDVcblRpYmlvdGFyc3VzICAgICAgICAwLjM4ICAgICAgIDAuNTMgICAwLjQ1ICAgICAwLjU4ICAgIDAuNzUgIDAuODEgICAgICAgIDEuMDAgICAgICAgMC40NiAgICAwLjM4XG5Ta3VsbFdpZHRoICAgICAgICAgMC40NCAgICAgICAwLjQzICAgMC40NyAgICAgMC41MyAgICAwLjUxICAwLjUyICAgICAgICAwLjQ2ICAgICAgIDEuMDAgICAgMC4zOFxuU3Rlcm51bSAgICAgICAgICAgIDAuNTAgICAgICAgMC41OCAgIDAuNTEgICAgIDAuNDkgICAgMC41NSAgMC40NSAgICAgICAgMC4zOCAgICAgICAwLjM4ICAgIDEuMDBcbiJ9 -->
+<pre><code>            TotalLength AlarExtent Weight BeakHead Humerus Femur Tibiotarsus SkullWidth Sternum
+TotalLength        1.00       0.69   0.58     0.47    0.48  0.44        0.38       0.44    0.50
+AlarExtent         0.69       1.00   0.57     0.50    0.68  0.58        0.53       0.43    0.58
+Weight             0.58       0.57   1.00     0.52    0.52  0.44        0.45       0.47    0.51
+BeakHead           0.47       0.50   0.52     1.00    0.62  0.62        0.58       0.53    0.49
+Humerus            0.48       0.68   0.52     0.62    1.00  0.82        0.75       0.51    0.55
+Femur              0.44       0.58   0.44     0.62    0.82  1.00        0.81       0.52    0.45
+Tibiotarsus        0.38       0.53   0.45     0.58    0.75  0.81        1.00       0.46    0.38
+SkullWidth         0.44       0.43   0.47     0.53    0.51  0.52        0.46       1.00    0.38
+Sternum            0.50       0.58   0.51     0.49    0.55  0.45        0.38       0.38    1.00</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
@@ -596,22 +355,152 @@ plot(df$Humerus, df$Tibiotarsus)
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubG9nLmZ1bGwgPSBnbG0oU3Vydml2YWwgfiAuICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKVxuc3VtbWFyeShsb2cuZnVsbClcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubG9nLmZ1bGwgPSBnbG0oU3Vydml2YWwgfiAuICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKVxuc3VtbWFyeShsb2cuZnVsbClcblxuYGBgIn0= -->
 <pre class="r"><code>log.full = glm(Survival ~ . , family = binomial(link = logit),data=df)
-summary(log.full)</code></pre>
+summary(log.full)
+</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IC4sIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksIFxuICAgIGRhdGEgPSBkZilcblxuRGV2aWFuY2UgUmVzaWR1YWxzOiBcbiAgICBNaW4gICAgICAgMVEgICBNZWRpYW4gICAgICAgM1EgICAgICBNYXggIFxuLTIuMTE0MSAgLTAuODAwOCAgIDAuMjAwNiAgIDAuNzgyMiAgIDIuMzA5MyAgXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgIEVzdGltYXRlIFN0ZC4gRXJyb3IgeiB2YWx1ZSBQcig+fHp8KSAgICBcbihJbnRlcmNlcHQpIDEwLjgzNTczICAgMTQuOTMxNTcgICAwLjcyNiAwLjQ2ODAyNyAgICBcblNleG0gICAgICAgICAxLjY0MjU1ICAgIDAuNjU4OTkgICAyLjQ5MyAwLjAxMjY4NCAqICBcblRvdGFsTGVuZ3RoIC0wLjQzNDAyICAgIDAuMTA4NTEgIC00LjAwMCA2LjM0ZS0wNSAqKipcbkFsYXJFeHRlbnQgICAwLjAyNjY2ICAgIDAuMDgxMTkgICAwLjMyOCAwLjc0MjY1MSAgICBcbldlaWdodCAgICAgIC0wLjg2NDk3ICAgIDAuMjQyNTQgIC0zLjU2NiAwLjAwMDM2MiAqKipcbkJlYWtIZWFkICAgICAwLjQ4NjI5ICAgIDAuNDYwNjEgICAxLjA1NiAwLjI5MTA4MyAgICBcbkh1bWVydXMgICAgIDQwLjg1MzY5ICAgMjIuMjU3OTYgICAxLjgzNSAwLjA2NjQzNyAuICBcbkZlbXVyICAgICAgIC0yLjcyNjg2ICAgMjEuNTc3NzIgIC0wLjEyNiAwLjg5OTQzNiAgICBcblRpYmlvdGFyc3VzICA2Ljg5MTU1ICAgIDkuOTYwNjIgICAwLjY5MiAwLjQ4OTAxMyAgICBcblNrdWxsV2lkdGggIDEzLjc0MzQ0ICAgMTguOTM5MzUgICAwLjcyNiAwLjQ2ODA1MCAgICBcblN0ZXJudW0gICAgIDE2LjI1NjMxICAgIDguMzI0MzAgICAxLjk1MyAwLjA1MDgzNCAuICBcbi0tLVxuU2lnbmlmLiBjb2RlczogIDAg4oCYKioq4oCZIDAuMDAxIOKAmCoq4oCZIDAuMDEg4oCYKuKAmSAwLjA1IOKAmC7igJkgMC4xIOKAmCDigJkgMVxuXG4oRGlzcGVyc2lvbiBwYXJhbWV0ZXIgZm9yIGJpbm9taWFsIGZhbWlseSB0YWtlbiB0byBiZSAxKVxuXG4gICAgTnVsbCBkZXZpYW5jZTogMTg4LjA3ICBvbiAxMzUgIGRlZ3JlZXMgb2YgZnJlZWRvbVxuUmVzaWR1YWwgZGV2aWFuY2U6IDEzMC4yMSAgb24gMTI1ICBkZWdyZWVzIG9mIGZyZWVkb21cbkFJQzogMTUyLjIxXG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiA1XG4ifQ== -->
+<pre><code>
+Call:
+glm(formula = Survival ~ ., family = binomial(link = logit), 
+    data = df)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.1141  -0.8008   0.2006   0.7822   2.3093  
+
+Coefficients:
+            Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept) 10.83573   14.93157   0.726 0.468027    
+Sexm         1.64255    0.65899   2.493 0.012684 *  
+TotalLength -0.43402    0.10851  -4.000 6.34e-05 ***
+AlarExtent   0.02666    0.08119   0.328 0.742651    
+Weight      -0.86497    0.24254  -3.566 0.000362 ***
+BeakHead     0.48629    0.46061   1.056 0.291083    
+Humerus     40.85369   22.25796   1.835 0.066437 .  
+Femur       -2.72686   21.57772  -0.126 0.899436    
+Tibiotarsus  6.89155    9.96062   0.692 0.489013    
+SkullWidth  13.74344   18.93935   0.726 0.468050    
+Sternum     16.25631    8.32430   1.953 0.050834 .  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 188.07  on 135  degrees of freedom
+Residual deviance: 130.21  on 125  degrees of freedom
+AIC: 152.21
+
+Number of Fisher Scoring iterations: 5</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubG9nLnN0ZXAgPSBsb2cuZnVsbCAlPiUgc3RlcEFJQyh0cmFjZSA9IEZBTFNFKVxuc3VtbWFyeShsb2cuc3RlcClcblxubG9nLnN0ZXAxID0gZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IFNleCArIFRvdGFsTGVuZ3RoICsgV2VpZ2h0ICsgXG4gICAgSHVtZXJ1cyArIFN0ZXJudW0sIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksIGRhdGEgPSBkZilcbnN1bW1hcnkobG9nLnN0ZXAxKVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubG9nLnN0ZXAgPSBsb2cuZnVsbCAlPiUgc3RlcEFJQyh0cmFjZSA9IEZBTFNFKVxuc3VtbWFyeShsb2cuc3RlcClcbmBgYCJ9 -->
 <pre class="r"><code>log.step = log.full %&gt;% stepAIC(trace = FALSE)
-summary(log.step)
+summary(log.step)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IFNleCArIFRvdGFsTGVuZ3RoICsgV2VpZ2h0ICsgQmVha0hlYWQgKyBcbiAgICBIdW1lcnVzICsgU3Rlcm51bSwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSwgZGF0YSA9IGRmKVxuXG5EZXZpYW5jZSBSZXNpZHVhbHM6IFxuICAgIE1pbiAgICAgICAxUSAgIE1lZGlhbiAgICAgICAzUSAgICAgIE1heCAgXG4tMS45MzgyICAtMC43OTQyICAgMC4yMDI4ICAgMC43ODY3ICAgMi40Mzc1ICBcblxuQ29lZmZpY2llbnRzOlxuICAgICAgICAgICAgRXN0aW1hdGUgU3RkLiBFcnJvciB6IHZhbHVlIFByKD58enwpICAgIFxuKEludGVyY2VwdCkgIDE1Ljg1OTAgICAgMTEuODk1MyAgIDEuMzMzIDAuMTgyNDYzICAgIFxuU2V4bSAgICAgICAgICAxLjU5NTggICAgIDAuNTI4MiAgIDMuMDIxIDAuMDAyNTE4ICoqIFxuVG90YWxMZW5ndGggIC0wLjQxNzkgICAgIDAuMTAxNCAgLTQuMTE5ICAzLjhlLTA1ICoqKlxuV2VpZ2h0ICAgICAgIC0wLjgyNTkgICAgIDAuMjM0OCAgLTMuNTE4IDAuMDAwNDM1ICoqKlxuQmVha0hlYWQgICAgICAwLjYxMDcgICAgIDAuNDI3MSAgIDEuNDMwIDAuMTUyNzU1ICAgIFxuSHVtZXJ1cyAgICAgIDUxLjQwNDYgICAgMTQuODI5OCAgIDMuNDY2IDAuMDAwNTI4ICoqKlxuU3Rlcm51bSAgICAgIDE2LjgxODUgICAgIDguMTgwOCAgIDIuMDU2IDAuMDM5Nzk4ICogIFxuLS0tXG5TaWduaWYuIGNvZGVzOiAgMCDigJgqKirigJkgMC4wMDEg4oCYKirigJkgMC4wMSDigJgq4oCZIDAuMDUg4oCYLuKAmSAwLjEg4oCYIOKAmSAxXG5cbihEaXNwZXJzaW9uIHBhcmFtZXRlciBmb3IgYmlub21pYWwgZmFtaWx5IHRha2VuIHRvIGJlIDEpXG5cbiAgICBOdWxsIGRldmlhbmNlOiAxODguMDcgIG9uIDEzNSAgZGVncmVlcyBvZiBmcmVlZG9tXG5SZXNpZHVhbCBkZXZpYW5jZTogMTMxLjU3ICBvbiAxMjkgIGRlZ3JlZXMgb2YgZnJlZWRvbVxuQUlDOiAxNDUuNTdcblxuTnVtYmVyIG9mIEZpc2hlciBTY29yaW5nIGl0ZXJhdGlvbnM6IDVcbiJ9 -->
+<pre><code>
+Call:
+glm(formula = Survival ~ Sex + TotalLength + Weight + BeakHead + 
+    Humerus + Sternum, family = binomial(link = logit), data = df)
 
-log.step1 = glm(formula = Survival ~ Sex + TotalLength + Weight + 
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.9382  -0.7942   0.2028   0.7867   2.4375  
+
+Coefficients:
+            Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)  15.8590    11.8953   1.333 0.182463    
+Sexm          1.5958     0.5282   3.021 0.002518 ** 
+TotalLength  -0.4179     0.1014  -4.119  3.8e-05 ***
+Weight       -0.8259     0.2348  -3.518 0.000435 ***
+BeakHead      0.6107     0.4271   1.430 0.152755    
+Humerus      51.4046    14.8298   3.466 0.000528 ***
+Sternum      16.8185     8.1808   2.056 0.039798 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 188.07  on 135  degrees of freedom
+Residual deviance: 131.57  on 129  degrees of freedom
+AIC: 145.57
+
+Number of Fisher Scoring iterations: 5</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubG9nLnJlbW92ZSA9IGdsbShmb3JtdWxhID0gU3Vydml2YWwgfiBTZXggKyBUb3RhbExlbmd0aCArIFdlaWdodCArIEZlbXVyICsgVGliaW90YXJzdXMgK1xuICAgIEh1bWVydXMgKyBTdGVybnVtLCBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gbG9naXQpLCBkYXRhID0gZGYpXG5sb2cucmVtb3ZlMSA9IGxvZy5yZW1vdmUgJT4lIHN0ZXBBSUModHJhY2UgPSBGQUxTRSlcbnN1bW1hcnkobG9nLnJlbW92ZTEpXG5gYGAifQ== -->
+<pre class="r"><code>log.remove = glm(formula = Survival ~ Sex + TotalLength + Weight + Femur + Tibiotarsus +
+    Humerus + Sternum, family = binomial(link = logit), data = df)
+log.remove1 = log.remove %&gt;% stepAIC(trace = FALSE)
+summary(log.remove1)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IFNleCArIFRvdGFsTGVuZ3RoICsgV2VpZ2h0ICsgSHVtZXJ1cyArIFxuICAgIFN0ZXJudW0sIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksIGRhdGEgPSBkZilcblxuRGV2aWFuY2UgUmVzaWR1YWxzOiBcbiAgICBNaW4gICAgICAgMVEgICBNZWRpYW4gICAgICAgM1EgICAgICBNYXggIFxuLTIuMDM3NiAgLTAuNzk0OCAgIDAuMjQwOSAgIDAuNzgxMCAgIDIuNTE3MiAgXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgIEVzdGltYXRlIFN0ZC4gRXJyb3IgeiB2YWx1ZSBQcig+fHp8KSAgICBcbihJbnRlcmNlcHQpIDIyLjkyOTc5ICAgMTAuODM5MjggICAyLjExNSAgMC4wMzQzOSAqICBcblNleG0gICAgICAgICAxLjQ1NTM4ICAgIDAuNTEwMTYgICAyLjg1MyAgMC4wMDQzMyAqKiBcblRvdGFsTGVuZ3RoIC0wLjM4MTQwICAgIDAuMDk0OTMgIC00LjAxOCA1Ljg4ZS0wNSAqKipcbldlaWdodCAgICAgIC0wLjc1MjQ5ICAgIDAuMjI1MTMgIC0zLjM0MiAgMC4wMDA4MyAqKipcbkh1bWVydXMgICAgIDU2LjQ5OTA0ICAgMTQuMjk0MzAgICAzLjk1MyA3LjczZS0wNSAqKipcblN0ZXJudW0gICAgIDE3LjgzNDc0ICAgIDguMDAxMDUgICAyLjIyOSAgMC4wMjU4MSAqICBcbi0tLVxuU2lnbmlmLiBjb2RlczogIDAg4oCYKioq4oCZIDAuMDAxIOKAmCoq4oCZIDAuMDEg4oCYKuKAmSAwLjA1IOKAmC7igJkgMC4xIOKAmCDigJkgMVxuXG4oRGlzcGVyc2lvbiBwYXJhbWV0ZXIgZm9yIGJpbm9taWFsIGZhbWlseSB0YWtlbiB0byBiZSAxKVxuXG4gICAgTnVsbCBkZXZpYW5jZTogMTg4LjA3ICBvbiAxMzUgIGRlZ3JlZXMgb2YgZnJlZWRvbVxuUmVzaWR1YWwgZGV2aWFuY2U6IDEzMy42NCAgb24gMTMwICBkZWdyZWVzIG9mIGZyZWVkb21cbkFJQzogMTQ1LjY0XG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiA1XG4ifQ== -->
+<pre><code>
+Call:
+glm(formula = Survival ~ Sex + TotalLength + Weight + Humerus + 
+    Sternum, family = binomial(link = logit), data = df)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.0376  -0.7948   0.2409   0.7810   2.5172  
+
+Coefficients:
+            Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept) 22.92979   10.83928   2.115  0.03439 *  
+Sexm         1.45538    0.51016   2.853  0.00433 ** 
+TotalLength -0.38140    0.09493  -4.018 5.88e-05 ***
+Weight      -0.75249    0.22513  -3.342  0.00083 ***
+Humerus     56.49904   14.29430   3.953 7.73e-05 ***
+Sternum     17.83474    8.00105   2.229  0.02581 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 188.07  on 135  degrees of freedom
+Residual deviance: 133.64  on 130  degrees of freedom
+AIC: 145.64
+
+Number of Fisher Scoring iterations: 5</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubG9nLnN0ZXAxID0gZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IFNleCArIFRvdGFsTGVuZ3RoICsgV2VpZ2h0ICsgXG4gICAgSHVtZXJ1cyArIFN0ZXJudW0sIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksIGRhdGEgPSBkZilcbnN1bW1hcnkobG9nLnN0ZXAxKVxuYGBgIn0= -->
+<pre class="r"><code>log.step1 = glm(formula = Survival ~ Sex + TotalLength + Weight + 
     Humerus + Sternum, family = binomial(link = logit), data = df)
 summary(log.step1)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IFNleCArIFRvdGFsTGVuZ3RoICsgV2VpZ2h0ICsgSHVtZXJ1cyArIFxuICAgIFN0ZXJudW0sIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksIGRhdGEgPSBkZilcblxuRGV2aWFuY2UgUmVzaWR1YWxzOiBcbiAgICBNaW4gICAgICAgMVEgICBNZWRpYW4gICAgICAgM1EgICAgICBNYXggIFxuLTIuMDM3NiAgLTAuNzk0OCAgIDAuMjQwOSAgIDAuNzgxMCAgIDIuNTE3MiAgXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgIEVzdGltYXRlIFN0ZC4gRXJyb3IgeiB2YWx1ZSBQcig+fHp8KSAgICBcbihJbnRlcmNlcHQpIDIyLjkyOTc5ICAgMTAuODM5MjggICAyLjExNSAgMC4wMzQzOSAqICBcblNleG0gICAgICAgICAxLjQ1NTM4ICAgIDAuNTEwMTYgICAyLjg1MyAgMC4wMDQzMyAqKiBcblRvdGFsTGVuZ3RoIC0wLjM4MTQwICAgIDAuMDk0OTMgIC00LjAxOCA1Ljg4ZS0wNSAqKipcbldlaWdodCAgICAgIC0wLjc1MjQ5ICAgIDAuMjI1MTMgIC0zLjM0MiAgMC4wMDA4MyAqKipcbkh1bWVydXMgICAgIDU2LjQ5OTA0ICAgMTQuMjk0MzAgICAzLjk1MyA3LjczZS0wNSAqKipcblN0ZXJudW0gICAgIDE3LjgzNDc0ICAgIDguMDAxMDUgICAyLjIyOSAgMC4wMjU4MSAqICBcbi0tLVxuU2lnbmlmLiBjb2RlczogIDAg4oCYKioq4oCZIDAuMDAxIOKAmCoq4oCZIDAuMDEg4oCYKuKAmSAwLjA1IOKAmC7igJkgMC4xIOKAmCDigJkgMVxuXG4oRGlzcGVyc2lvbiBwYXJhbWV0ZXIgZm9yIGJpbm9taWFsIGZhbWlseSB0YWtlbiB0byBiZSAxKVxuXG4gICAgTnVsbCBkZXZpYW5jZTogMTg4LjA3ICBvbiAxMzUgIGRlZ3JlZXMgb2YgZnJlZWRvbVxuUmVzaWR1YWwgZGV2aWFuY2U6IDEzMy42NCAgb24gMTMwICBkZWdyZWVzIG9mIGZyZWVkb21cbkFJQzogMTQ1LjY0XG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiA1XG4ifQ== -->
+<pre><code>
+Call:
+glm(formula = Survival ~ Sex + TotalLength + Weight + Humerus + 
+    Sternum, family = binomial(link = logit), data = df)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.0376  -0.7948   0.2409   0.7810   2.5172  
+
+Coefficients:
+            Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept) 22.92979   10.83928   2.115  0.03439 *  
+Sexm         1.45538    0.51016   2.853  0.00433 ** 
+TotalLength -0.38140    0.09493  -4.018 5.88e-05 ***
+Weight      -0.75249    0.22513  -3.342  0.00083 ***
+Humerus     56.49904   14.29430   3.953 7.73e-05 ***
+Sternum     17.83474    8.00105   2.229  0.02581 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 188.07  on 135  degrees of freedom
+Residual deviance: 133.64  on 130  degrees of freedom
+AIC: 145.64
+
+Number of Fisher Scoring iterations: 5</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
@@ -624,7 +513,7 @@ summary(log.step1)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KYGBge3J9DQpybShsaXN0ID0gbHMoKSkNCmxpYnJhcnkodGlkeXZlcnNlKQ0KbGlicmFyeShnZ3Bsb3QyKQ0KbGlicmFyeShsbXRlc3QpDQpsaWJyYXJ5KEhtaXNjKQ0KbGlicmFyeShNQVNTKQ0KbGlicmFyeShkcGx5cikNCmBgYA0KDQpgYGB7cn0NCnJtKGxpc3QgPSBscygpKQ0KZGYgPSByZWFkLnRhYmxlKCIuLi9kYXRhL2J1bXB1cy50eHQiLCBoZWFkZXIgPSBUUlVFLCBzZXAgPSAiXHQiKQ0KZGYgPC0gc3Vic2V0KGRmLCBzZWxlY3QgPSAtYyhJRCkpDQpkZiRTdXJ2aXZhbCA8LSBhcy5pbnRlZ2VyKGRmJFN1cnZpdmFsKQ0KZGYkU2V4IDwtIGFzLmZhY3RvcihkZiRTZXgpDQpgYGANCg0KYGBge3J9DQpzdW1tYXJ5KGRmKQ0KaGVhZChkZikNCmBgYA0KDQpgYGB7cn0NCnh0YWJzKH4gZGYkU3Vydml2YWwgKyBkZiRTZXgpDQpgYGANCg0KYGBge3J9DQojIHVuaXZhcmlhYmxlIGFuYWx5c2lzDQpsb2cuc2V4ICAgICAgICAgID0gZ2xtKFN1cnZpdmFsIH4gU2V4ICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKQ0KbG9nLmxlbiAgICAgICAgICA9IGdsbShTdXJ2aXZhbCB+IFRvdGFsTGVuZ3RoICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKQ0KbG9nLmFsYXIgICAgICAgICA9IGdsbShTdXJ2aXZhbCB+IEFsYXJFeHRlbnQgLCBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gbG9naXQpLGRhdGE9ZGYpDQpsb2cud2VpZ2h0ICAgICAgID0gZ2xtKFN1cnZpdmFsIH4gV2VpZ2h0ICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKQ0KbG9nLmJlYWsgICAgICAgICA9IGdsbShTdXJ2aXZhbCB+IEJlYWtIZWFkICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKQ0KbG9nLmh1bWVydXMgICAgICA9IGdsbShTdXJ2aXZhbCB+IEh1bWVydXMgLCBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gbG9naXQpLGRhdGE9ZGYpDQpsb2cuZmVtdXIgICAgICAgID0gZ2xtKFN1cnZpdmFsIH4gRmVtdXIgLCBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gbG9naXQpLGRhdGE9ZGYpDQpsb2cudGliaW90YXJzdXMgID0gZ2xtKFN1cnZpdmFsIH4gVGliaW90YXJzdXMgLCBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gbG9naXQpLGRhdGE9ZGYpDQpsb2cuc2t1bGwgICAgICAgID0gZ2xtKFN1cnZpdmFsIH4gU2t1bGxXaWR0aCAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZikNCmxvZy5zdGVybnVtICAgICAgPSBnbG0oU3Vydml2YWwgfiBTdGVybnVtICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKQ0KDQpzdW1tYXJ5KGxvZy5zZXgpDQpzdW1tYXJ5KGxvZy5sZW4pICANCnN1bW1hcnkobG9nLmFsYXIpDQpzdW1tYXJ5KGxvZy53ZWlnaHQpDQpzdW1tYXJ5KGxvZy5iZWFrKQ0Kc3VtbWFyeShsb2cuaHVtZXJ1cykNCnN1bW1hcnkobG9nLmZlbXVyKQ0Kc3VtbWFyeShsb2cudGliaW90YXJzdXMpDQpzdW1tYXJ5KGxvZy5za3VsbCkNCnN1bW1hcnkobG9nLnN0ZXJudW0pDQoNCiMNCiMNCiMNCiMNCiMNCiMNCiMNCiMNCiMNCiMNCmBgYA0KDQpgYGB7cn0NCiNmaW5kIGNvcnJlbGF0ZWQgZmFjdG9ycw0KZGYuY29yIDwtIHN1YnNldChkZiwgc2VsZWN0ID0gLWMoU3Vydml2YWwsIFNleCkpDQpyZXMgPC0gY29yKGRmLmNvcikNCnJvdW5kKHJlcywgMikNCg0KcGxvdChkZiRBbGFyRXh0ZW50LCBkZiRUb3RhbExlbmd0aCkNCnBsb3QoZGYkRmVtdXIsIGRmJEh1bWVydXMpDQpwbG90KGRmJEZlbXVyLCBkZiRUaWJpb3RhcnN1cykNCnBsb3QoZGYkSHVtZXJ1cywgZGYkVGliaW90YXJzdXMpDQojIyBhbGFyLWxlbmd0aCAwLjY5LCBmZW11ci1odW1lcnVzIDAuODIsIGZlbXVyLXRpYmlvdGFyc3VzIDAuODEsIGh1bWVydXMtdGliaW90YXJzdXMgMC43NQ0KYGBgDQoNCmBgYHtyfQ0KI3NleCBpbnRlcmFjdGlvbiBvbiBtZWFzdXJlbWVudHMNCmBgYA0KDQpgYGB7cn0NCmxvZy5mdWxsID0gZ2xtKFN1cnZpdmFsIH4gLiAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZikNCnN1bW1hcnkobG9nLmZ1bGwpDQpgYGANCg0KDQpgYGB7cn0NCmxvZy5zdGVwID0gbG9nLmZ1bGwgJT4lIHN0ZXBBSUModHJhY2UgPSBGQUxTRSkNCnN1bW1hcnkobG9nLnN0ZXApDQoNCmxvZy5zdGVwMSA9IGdsbShmb3JtdWxhID0gU3Vydml2YWwgfiBTZXggKyBUb3RhbExlbmd0aCArIFdlaWdodCArIA0KICAgIEh1bWVydXMgKyBTdGVybnVtLCBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gbG9naXQpLCBkYXRhID0gZGYpDQpzdW1tYXJ5KGxvZy5zdGVwMSkNCmBgYA0KDQpgYGB7cn0NCiNUbyBhc3Nlc3MgdGhlIHN0YXRpc3RpY2FsIHNpZ25pZmljYW5jZSBvZiBlYWNoIHRlcm0sIHdlIGhhdmUgdG8gYXNrIGRyb3B0ZXJtKCkgdG8gcGVyZm9ybSBhIHNpZ25pZmljYW5jZQ0KI3Rlc3QgYXMgd2VsbC4gVGhlIGFwcHJvcHJpYXRlIHRlc3QgaGVyZSBpcyBhIM+HDQojMg0KI3Rlc3QgKGxpa2VsaWhvb2QgcmF0aW8gdGVzdCk6DQpgYGA=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KYGBge3J9DQpybShsaXN0ID0gbHMoKSkNCmxpYnJhcnkodGlkeXZlcnNlKQ0KbGlicmFyeShnZ3Bsb3QyKQ0KbGlicmFyeShsbXRlc3QpDQpsaWJyYXJ5KEhtaXNjKQ0KbGlicmFyeShNQVNTKQ0KbGlicmFyeShkcGx5cikNCmBgYA0KDQpgYGB7cn0NCnJtKGxpc3QgPSBscygpKQ0KZGYgPSByZWFkLnRhYmxlKCIuLi9kYXRhL2J1bXB1cy50eHQiLCBoZWFkZXIgPSBUUlVFLCBzZXAgPSAiXHQiKQ0KZGYgPC0gc3Vic2V0KGRmLCBzZWxlY3QgPSAtYyhJRCkpDQpkZiRTdXJ2aXZhbCA8LSBhcy5pbnRlZ2VyKGRmJFN1cnZpdmFsKQ0KZGYkU2V4IDwtIGFzLmZhY3RvcihkZiRTZXgpDQpgYGANCg0KYGBge3J9DQpzdW1tYXJ5KGRmKQ0KaGVhZChkZikNCmBgYA0KDQpgYGB7cn0NCnh0YWJzKH4gZGYkU3Vydml2YWwgKyBkZiRTZXgpDQpvZGRzLnJhdGlvKGRmJFN1cnZpdmFsICsgZGYkU2V4KQ0KYGBgDQoNCmBgYHtyfQ0KIyB1bml2YXJpYWJsZSBhbmFseXNpcw0KbG9nLnNleCAgICAgICAgICA9IGdsbShTdXJ2aXZhbCB+IFNleCAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZikNCmxvZy5sZW4gICAgICAgICAgPSBnbG0oU3Vydml2YWwgfiBUb3RhbExlbmd0aCAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZikNCmxvZy5hbGFyICAgICAgICAgPSBnbG0oU3Vydml2YWwgfiBBbGFyRXh0ZW50ICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKQ0KbG9nLndlaWdodCAgICAgICA9IGdsbShTdXJ2aXZhbCB+IFdlaWdodCAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZikNCmxvZy5iZWFrICAgICAgICAgPSBnbG0oU3Vydml2YWwgfiBCZWFrSGVhZCAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZikNCmxvZy5odW1lcnVzICAgICAgPSBnbG0oU3Vydml2YWwgfiBIdW1lcnVzICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKQ0KbG9nLmZlbXVyICAgICAgICA9IGdsbShTdXJ2aXZhbCB+IEZlbXVyICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKQ0KbG9nLnRpYmlvdGFyc3VzICA9IGdsbShTdXJ2aXZhbCB+IFRpYmlvdGFyc3VzICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKQ0KbG9nLnNrdWxsICAgICAgICA9IGdsbShTdXJ2aXZhbCB+IFNrdWxsV2lkdGggLCBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gbG9naXQpLGRhdGE9ZGYpDQpsb2cuc3Rlcm51bSAgICAgID0gZ2xtKFN1cnZpdmFsIH4gU3Rlcm51bSAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZikNCg0Kc3VtbWFyeShsb2cuc2V4KQ0Kc3VtbWFyeShsb2cubGVuKSAgDQpzdW1tYXJ5KGxvZy5hbGFyKQ0Kc3VtbWFyeShsb2cud2VpZ2h0KQ0Kc3VtbWFyeShsb2cuYmVhaykNCnN1bW1hcnkobG9nLmh1bWVydXMpDQpzdW1tYXJ5KGxvZy5mZW11cikNCnN1bW1hcnkobG9nLnRpYmlvdGFyc3VzKQ0Kc3VtbWFyeShsb2cuc2t1bGwpDQpzdW1tYXJ5KGxvZy5zdGVybnVtKQ0KDQojIFNleCAgICAgICAgIDAuMzE5MCAwLjA3ODYgKg0KIyBMZW4gICAgICAgICAwLjAwNDMyIDAuMDA0NDkgKioNCiMgQWxhciAgICAgICAgMC40NDEgMC40MzIgDQojIFdlaWdodCAgICAgIDAuMDEzMyAwLjAxNDYgKioNCiMgQmVhayAgICAgICAgMC40NDkgMC40NDANCiMgSHVtZXJ1cyAgICAgMC4wMzYzIDAuMDM0NCAqKg0KIyBGZW11ciAgICAgICAwLjEyMSAwLjExNiAqKg0KIyBUaWJpb3RhcnN1cyAwLjE4MyAwLjE3NSAqKg0KIyBTa3VsbCAgICAgICAwLjY5NSAwLjY4Mw0KIyBTdGVybnVtICAgICAwLjEyMSAwLjExNCAqKg0KDQojIGxlbiwgd2VpZ2h0LCBodW1lcnVzLCBmZW11ciwgdGliaW90YXJzdXMsIHN0ZXJudW0NCmBgYA0KDQpgYGB7cn0NCiNmaW5kIGNvcnJlbGF0ZWQgZmFjdG9ycw0KZGYuY29yIDwtIHN1YnNldChkZiwgc2VsZWN0ID0gLWMoU3Vydml2YWwsIFNleCkpDQpyZXMgPC0gY29yKGRmLmNvcikNCnJvdW5kKHJlcywgMikNCg0KcGxvdChkZiRBbGFyRXh0ZW50LCBkZiRUb3RhbExlbmd0aCkNCnBsb3QoZGYkRmVtdXIsIGRmJEh1bWVydXMpDQpwbG90KGRmJEZlbXVyLCBkZiRUaWJpb3RhcnN1cykNCnBsb3QoZGYkSHVtZXJ1cywgZGYkVGliaW90YXJzdXMpDQoNCiMgYWJvdmUgcD0wLjcNCiMjIGFsYXItbGVuZ3RoIDAuNjksIGZlbXVyLWh1bWVydXMgMC44MiwgZmVtdXItdGliaW90YXJzdXMgMC44MSwgaHVtZXJ1cy10aWJpb3RhcnN1cyAwLjc1DQpgYGANCg0KYGBge3J9DQojc2V4IGludGVyYWN0aW9uIG9uIG1lYXN1cmVtZW50cw0KYGBgDQoNCmBgYHtyfQ0KbG9nLmZ1bGwgPSBnbG0oU3Vydml2YWwgfiAuICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKQ0Kc3VtbWFyeShsb2cuZnVsbCkNCmBgYA0KDQoNCmBgYHtyfQ0KbG9nLnN0ZXAgPSBsb2cuZnVsbCAlPiUgc3RlcEFJQyh0cmFjZSA9IEZBTFNFKQ0Kc3VtbWFyeShsb2cuc3RlcCkNCg0KbG9nLnN0ZXAxID0gZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IFNleCArIFRvdGFsTGVuZ3RoICsgV2VpZ2h0ICsgDQogICAgSHVtZXJ1cyArIFN0ZXJudW0sIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksIGRhdGEgPSBkZikNCnN1bW1hcnkobG9nLnN0ZXAxKQ0KYGBgDQoNCmBgYHtyfQ0KI1RvIGFzc2VzcyB0aGUgc3RhdGlzdGljYWwgc2lnbmlmaWNhbmNlIG9mIGVhY2ggdGVybSwgd2UgaGF2ZSB0byBhc2sgZHJvcHRlcm0oKSB0byBwZXJmb3JtIGEgc2lnbmlmaWNhbmNlDQojdGVzdCBhcyB3ZWxsLiBUaGUgYXBwcm9wcmlhdGUgdGVzdCBoZXJlIGlzIGEgz4cNCiMyDQojdGVzdCAobGlrZWxpaG9vZCByYXRpbyB0ZXN0KToNCmBgYA==</div>
 
 
 
