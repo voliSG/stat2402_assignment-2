@@ -2,17 +2,104 @@
 title: "R Notebook"
 output: html_notebook
 ---
-
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
-
-Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
-
 ```{r}
-plot(cars)
+rm(list = ls())
+library(tidyverse)
+library(ggplot2)
+library(lmtest)
+library(Hmisc)
+library(MASS)
+library(dplyr)
 ```
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+```{r}
+rm(list = ls())
+df = read.table("../data/bumpus.txt", header = TRUE, sep = "\t")
+df <- subset(df, select = -c(ID))
+df$Survival <- as.integer(df$Survival)
+df$Sex <- as.factor(df$Sex)
+```
 
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+```{r}
+summary(df)
+head(df)
+```
 
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+```{r}
+xtabs(~ df$Survival + df$Sex)
+```
+
+```{r}
+# univariable analysis
+log.sex          = glm(Survival ~ Sex , family = binomial(link = logit),data=df)
+log.len          = glm(Survival ~ TotalLength , family = binomial(link = logit),data=df)
+log.alar         = glm(Survival ~ AlarExtent , family = binomial(link = logit),data=df)
+log.weight       = glm(Survival ~ Weight , family = binomial(link = logit),data=df)
+log.beak         = glm(Survival ~ BeakHead , family = binomial(link = logit),data=df)
+log.humerus      = glm(Survival ~ Humerus , family = binomial(link = logit),data=df)
+log.femur        = glm(Survival ~ Femur , family = binomial(link = logit),data=df)
+log.tibiotarsus  = glm(Survival ~ Tibiotarsus , family = binomial(link = logit),data=df)
+log.skull        = glm(Survival ~ SkullWidth , family = binomial(link = logit),data=df)
+log.sternum      = glm(Survival ~ Sternum , family = binomial(link = logit),data=df)
+
+summary(log.sex)
+summary(log.len)  
+summary(log.alar)
+summary(log.weight)
+summary(log.beak)
+summary(log.humerus)
+summary(log.femur)
+summary(log.tibiotarsus)
+summary(log.skull)
+summary(log.sternum)
+
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+```
+
+```{r}
+#find correlated factors
+df.cor <- subset(df, select = -c(Survival, Sex))
+res <- cor(df.cor)
+round(res, 2)
+
+plot(df$AlarExtent, df$TotalLength)
+plot(df$Femur, df$Humerus)
+plot(df$Femur, df$Tibiotarsus)
+plot(df$Humerus, df$Tibiotarsus)
+## alar-length 0.69, femur-humerus 0.82, femur-tibiotarsus 0.81, humerus-tibiotarsus 0.75
+```
+
+```{r}
+#sex interaction on measurements
+```
+
+```{r}
+log.full = glm(Survival ~ . , family = binomial(link = logit),data=df)
+summary(log.full)
+```
+
+
+```{r}
+log.step = log.full %>% stepAIC(trace = FALSE)
+summary(log.step)
+
+log.step1 = glm(formula = Survival ~ Sex + TotalLength + Weight + 
+    Humerus + Sternum, family = binomial(link = logit), data = df)
+summary(log.step1)
+```
+
+```{r}
+#To assess the statistical significance of each term, we have to ask dropterm() to perform a significance
+#test as well. The appropriate test here is a χ
+#2
+#test (likelihood ratio test):
+```
