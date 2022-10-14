@@ -221,13 +221,14 @@ pre code {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucm0obGlzdCA9IGxzKCkpXG5saWJyYXJ5KHRpZHl2ZXJzZSlcbmxpYnJhcnkoZ2dwbG90MilcbmxpYnJhcnkobG10ZXN0KVxubGlicmFyeShIbWlzYylcbmxpYnJhcnkoTUFTUylcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucm0obGlzdCA9IGxzKCkpXG5saWJyYXJ5KHRpZHl2ZXJzZSlcbmxpYnJhcnkoZ2dwbG90MilcbmxpYnJhcnkobG10ZXN0KVxubGlicmFyeShIbWlzYylcbmxpYnJhcnkoTUFTUylcbmxpYnJhcnkoZHBseXIpXG5gYGAifQ== -->
 <pre class="r"><code>rm(list = ls())
 library(tidyverse)
 library(ggplot2)
 library(lmtest)
 library(Hmisc)
-library(MASS)</code></pre>
+library(MASS)
+library(dplyr)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -246,258 +247,222 @@ df$Sex &lt;- as.factor(df$Sex)</code></pre>
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShkZilcbmBgYCJ9 -->
 <pre class="r"><code>summary(df)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiIFNleCAgICAgICBTdXJ2aXZhbCAgICAgICBUb3RhbExlbmd0aCAgICAgIEFsYXJFeHRlbnQgICAgICAgIFdlaWdodCAgICAgICAgIEJlYWtIZWFkICAgICAgICBIdW1lcnVzICAgICAgICAgICBGZW11ciAgICAgICBcbiBmOjQ5ICAgTWluLiAgIDowLjAwMDAgICBNaW4uICAgOjE1Mi4wICAgTWluLiAgIDoyMzAuMCAgIE1pbi4gICA6MjIuNjAgICBNaW4uICAgOjI5LjgwICAgTWluLiAgIDowLjY1OTAgICBNaW4uICAgOjAuNjUzMCAgXG4gbTo4NyAgIDFzdCBRdS46MC4wMDAwICAgMXN0IFF1LjoxNTcuMCAgIDFzdCBRdS46MjQyLjAgICAxc3QgUXUuOjI0LjU3ICAgMXN0IFF1LjozMS4xMCAgIDFzdCBRdS46MC43MTc3ICAgMXN0IFF1LjowLjcwMTcgIFxuICAgICAgICBNZWRpYW4gOjEuMDAwMCAgIE1lZGlhbiA6MTYwLjAgICBNZWRpYW4gOjI0Ni4wICAgTWVkaWFuIDoyNS41NSAgIE1lZGlhbiA6MzEuNjAgICBNZWRpYW4gOjAuNzMzMCAgIE1lZGlhbiA6MC43MTMwICBcbiAgICAgICAgTWVhbiAgIDowLjUyOTQgICBNZWFuICAgOjE1OS41ICAgTWVhbiAgIDoyNDUuMiAgIE1lYW4gICA6MjUuNTIgICBNZWFuICAgOjMxLjU3ICAgTWVhbiAgIDowLjczMTkgICBNZWFuICAgOjAuNzEzMCAgXG4gICAgICAgIDNyZCBRdS46MS4wMDAwICAgM3JkIFF1LjoxNjIuMCAgIDNyZCBRdS46MjQ5LjAgICAzcmQgUXUuOjI2LjUwICAgM3JkIFF1LjozMi4wMiAgIDNyZCBRdS46MC43NDgyICAgM3JkIFF1LjowLjczMTIgIFxuICAgICAgICBNYXguICAgOjEuMDAwMCAgIE1heC4gICA6MTY3LjAgICBNYXguICAgOjI1Ni4wICAgTWF4LiAgIDozMS4wMCAgIE1heC4gICA6MzMuNDAgICBNYXguICAgOjAuNzgwMCAgIE1heC4gICA6MC43NjcwICBcbiAgVGliaW90YXJzdXMgICAgICBTa3VsbFdpZHRoICAgICAgICBTdGVybnVtICAgICAgXG4gTWluLiAgIDoxLjAxMSAgIE1pbi4gICA6MC41NTEwICAgTWluLiAgIDowLjczNDAgIFxuIDFzdCBRdS46MS4xMTIgICAxc3QgUXUuOjAuNTkyMCAgIDFzdCBRdS46MC44MDkwICBcbiBNZWRpYW4gOjEuMTMzICAgTWVkaWFuIDowLjYwMjAgICBNZWRpYW4gOjAuODQxMCAgXG4gTWVhbiAgIDoxLjEzNCAgIE1lYW4gICA6MC42MDI1ICAgTWVhbiAgIDowLjgzOTkgIFxuIDNyZCBRdS46MS4xNjIgICAzcmQgUXUuOjAuNjExMCAgIDNyZCBRdS46MC44NjUyICBcbiBNYXguICAgOjEuMjMwICAgTWF4LiAgIDowLjY0MDAgICBNYXguICAgOjAuOTI3MCAgXG4ifQ== -->
-<pre><code> Sex       Survival       TotalLength      AlarExtent        Weight         BeakHead        Humerus           Femur       
- f:49   Min.   :0.0000   Min.   :152.0   Min.   :230.0   Min.   :22.60   Min.   :29.80   Min.   :0.6590   Min.   :0.6530  
- m:87   1st Qu.:0.0000   1st Qu.:157.0   1st Qu.:242.0   1st Qu.:24.57   1st Qu.:31.10   1st Qu.:0.7177   1st Qu.:0.7017  
-        Median :1.0000   Median :160.0   Median :246.0   Median :25.55   Median :31.60   Median :0.7330   Median :0.7130  
-        Mean   :0.5294   Mean   :159.5   Mean   :245.2   Mean   :25.52   Mean   :31.57   Mean   :0.7319   Mean   :0.7130  
-        3rd Qu.:1.0000   3rd Qu.:162.0   3rd Qu.:249.0   3rd Qu.:26.50   3rd Qu.:32.02   3rd Qu.:0.7482   3rd Qu.:0.7312  
-        Max.   :1.0000   Max.   :167.0   Max.   :256.0   Max.   :31.00   Max.   :33.40   Max.   :0.7800   Max.   :0.7670  
-  Tibiotarsus      SkullWidth        Sternum      
- Min.   :1.011   Min.   :0.5510   Min.   :0.7340  
- 1st Qu.:1.112   1st Qu.:0.5920   1st Qu.:0.8090  
- Median :1.133   Median :0.6020   Median :0.8410  
- Mean   :1.134   Mean   :0.6025   Mean   :0.8399  
- 3rd Qu.:1.162   3rd Qu.:0.6110   3rd Qu.:0.8652  
- Max.   :1.230   Max.   :0.6400   Max.   :0.9270  </code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiIFNleCAgICAgICBTdXJ2aXZhbCAgICAgICBUb3RhbExlbmd0aCAgICAgIEFsYXJFeHRlbnQgICAgICAgIFdlaWdodCAgICAgICAgIEJlYWtIZWFkICAgIFxuIGY6NDkgICBNaW4uICAgOjAuMDAwMCAgIE1pbi4gICA6MTUyLjAgICBNaW4uICAgOjIzMC4wICAgTWluLiAgIDoyMi42MCAgIE1pbi4gICA6MjkuODAgIFxuIG06ODcgICAxc3QgUXUuOjAuMDAwMCAgIDFzdCBRdS46MTU3LjAgICAxc3QgUXUuOjI0Mi4wICAgMXN0IFF1LjoyNC41NyAgIDFzdCBRdS46MzEuMTAgIFxuICAgICAgICBNZWRpYW4gOjEuMDAwMCAgIE1lZGlhbiA6MTYwLjAgICBNZWRpYW4gOjI0Ni4wICAgTWVkaWFuIDoyNS41NSAgIE1lZGlhbiA6MzEuNjAgIFxuICAgICAgICBNZWFuICAgOjAuNTI5NCAgIE1lYW4gICA6MTU5LjUgICBNZWFuICAgOjI0NS4yICAgTWVhbiAgIDoyNS41MiAgIE1lYW4gICA6MzEuNTcgIFxuICAgICAgICAzcmQgUXUuOjEuMDAwMCAgIDNyZCBRdS46MTYyLjAgICAzcmQgUXUuOjI0OS4wICAgM3JkIFF1LjoyNi41MCAgIDNyZCBRdS46MzIuMDIgIFxuICAgICAgICBNYXguICAgOjEuMDAwMCAgIE1heC4gICA6MTY3LjAgICBNYXguICAgOjI1Ni4wICAgTWF4LiAgIDozMS4wMCAgIE1heC4gICA6MzMuNDAgIFxuICAgIEh1bWVydXMgICAgICAgICAgIEZlbXVyICAgICAgICAgVGliaW90YXJzdXMgICAgICBTa3VsbFdpZHRoICAgICAgICBTdGVybnVtICAgICAgXG4gTWluLiAgIDowLjY1OTAgICBNaW4uICAgOjAuNjUzMCAgIE1pbi4gICA6MS4wMTEgICBNaW4uICAgOjAuNTUxMCAgIE1pbi4gICA6MC43MzQwICBcbiAxc3QgUXUuOjAuNzE3NyAgIDFzdCBRdS46MC43MDE3ICAgMXN0IFF1LjoxLjExMiAgIDFzdCBRdS46MC41OTIwICAgMXN0IFF1LjowLjgwOTAgIFxuIE1lZGlhbiA6MC43MzMwICAgTWVkaWFuIDowLjcxMzAgICBNZWRpYW4gOjEuMTMzICAgTWVkaWFuIDowLjYwMjAgICBNZWRpYW4gOjAuODQxMCAgXG4gTWVhbiAgIDowLjczMTkgICBNZWFuICAgOjAuNzEzMCAgIE1lYW4gICA6MS4xMzQgICBNZWFuICAgOjAuNjAyNSAgIE1lYW4gICA6MC44Mzk5ICBcbiAzcmQgUXUuOjAuNzQ4MiAgIDNyZCBRdS46MC43MzEyICAgM3JkIFF1LjoxLjE2MiAgIDNyZCBRdS46MC42MTEwICAgM3JkIFF1LjowLjg2NTIgIFxuIE1heC4gICA6MC43ODAwICAgTWF4LiAgIDowLjc2NzAgICBNYXguICAgOjEuMjMwICAgTWF4LiAgIDowLjY0MDAgICBNYXguICAgOjAuOTI3MCAgXG4ifQ== -->
+<pre><code> Sex       Survival       TotalLength      AlarExtent        Weight         BeakHead    
+ f:49   Min.   :0.0000   Min.   :152.0   Min.   :230.0   Min.   :22.60   Min.   :29.80  
+ m:87   1st Qu.:0.0000   1st Qu.:157.0   1st Qu.:242.0   1st Qu.:24.57   1st Qu.:31.10  
+        Median :1.0000   Median :160.0   Median :246.0   Median :25.55   Median :31.60  
+        Mean   :0.5294   Mean   :159.5   Mean   :245.2   Mean   :25.52   Mean   :31.57  
+        3rd Qu.:1.0000   3rd Qu.:162.0   3rd Qu.:249.0   3rd Qu.:26.50   3rd Qu.:32.02  
+        Max.   :1.0000   Max.   :167.0   Max.   :256.0   Max.   :31.00   Max.   :33.40  
+    Humerus           Femur         Tibiotarsus      SkullWidth        Sternum      
+ Min.   :0.6590   Min.   :0.6530   Min.   :1.011   Min.   :0.5510   Min.   :0.7340  
+ 1st Qu.:0.7177   1st Qu.:0.7017   1st Qu.:1.112   1st Qu.:0.5920   1st Qu.:0.8090  
+ Median :0.7330   Median :0.7130   Median :1.133   Median :0.6020   Median :0.8410  
+ Mean   :0.7319   Mean   :0.7130   Mean   :1.134   Mean   :0.6025   Mean   :0.8399  
+ 3rd Qu.:0.7482   3rd Qu.:0.7312   3rd Qu.:1.162   3rd Qu.:0.6110   3rd Qu.:0.8652  
+ Max.   :0.7800   Max.   :0.7670   Max.   :1.230   Max.   :0.6400   Max.   :0.9270  </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaGVhZChkZilcbmBgYCJ9 -->
 <pre class="r"><code>head(df)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6MTEsInN1bW1hcnkiOnsiRGVzY3JpcHRpb24iOlsiZGYgWzYgeCAxMV0iXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCZ3R5aVREbWl1QmlZR0JnWm1CaEJKS3NRQ1lEbTNPQW9aR3BFUU1EQ3hPUXg4akF3c0FKb2l1QThzSkFCamVRNWdVcEEySW03QmhGSTF0T2FsbHFUakdRSlFDV2hScVhCbVBrb3FsblRjNUpMSVlwaHh1U2xwaGNrbDhFWlAwRFlwajFqQXdJd0lqRWg4blBBdUtsUUx3QWltY0Q4VUlrK1k5QS9BR0l2d0x4SHlEK0RNUS9nWmdQSk85ZzBRQTJ6TUVLUmt2T0JJSlpEbGJQMGtBQVRsdk9CSXZEOWRrYmc0R0RQY1F4RGc1UTJ1NE1DSngxc0lPb2QzQlFBK3VINmJOLyt2dDVUcmZ6TlB2bmN6ZnA4b1d4MkQvdjliOXZuUktGb0V2MlpOWDl2RzMvL05qeTkwQWxDSDBKanAzbTNzZnRuN1ZyTS9GNDdySi90a0hoeU95bGp4RTBUUHpuYmFVTFR4UGcrajVFeWF6aE1GUzMvOWdxdHlQd2Rhdjl4MzFsSjdaWVJ0aC9ldWkrVHFUcW9mMG5rRzFLRiswL0FUWEhtZHJEOVQwQ3FSSklzbitjQWpiQS9qSFVmWStkcHpheXFkeEZwK0g2WHZYSGFIdzkxRy8vV21vK3lDYjdWeDlYZ254cy8rcGx4WlcvbjdmWnZ4YkttdzQweXY1VkhkaWg2TWtpTHpFM0ZaWXN1S0dDek1HcEZWQW1SM0JwVVZsbVdXSU9sTThka2wrU21PT1RtcGRla2dFVjRuTE1TU3h5clNoSnpTdUJKYXZ3MU16MERCaVB3eWsxTWRzak5URUZ5bWYzS00xTkxTb3Rocm5BTFRXM3RBaHVmR1pTSnRDR29tSzRQRmR3ZG1sT1RuaG1DdHhDOXVDUzFLSzhVdlFVemxtVVg2NEg4dzRvTFRKQlVoZ29UWUlVTXY5SFMvMWNLWWtsaVhwcFJVQXRrQnlBWWh4N2ZrRkpabjRlMERBbVVQNWtSZFBNV0lRbUlGQ2FCN0k4UlRjNW96UXZXOWZjRkdRRFVnN2loZEpzU0d4dWlKMHNNSmV4d2dJUUdMNlplYW13RU1wSlRFcUZSUUFmMEpkZ1Qrb1ZGR1hDUTV3TEtGcXNWd0tLRzVoSWNuNE9UQVNTdmY4QkFCNTdha21ZQkFBQSJ9 -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6MTEsInN1bW1hcnkiOnsiRGVzY3JpcHRpb24iOlsiZGYgWzYgeCAxMV0iXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCZ3R5aVREbWl1QmlZR0JnWm1CaEJKS3NRQ1lEbTNPQW9aR3BFUU1EQ3hPUXg4akF3c0FKb2l1QThzSkFCamVRNWdVcEEySW03QmhGSTF0T2FsbHFUakdRSlFDV2hScVhCbVBrb3FsblRjNUpMSVlwaHh1U2xwaGNrbDhFWlAwRFlwajFqQXdJd0lqRWg4blBBdUtsUUx3QWltY0Q4VUlrK1k5QS9BR0l2d0x4SHlEK0RNUS9nWmdQSk85ZzBRQTJ6TUVLUmt2T0JJSlpEbGJQMGtBQVRsdk9CSXZEOWRrYmc0R0RQY1F4RGc1UTJ1NE1DSngxc0lPb2QzQlFBK3VINmJOLyt2dDVUcmZ6TlB2bmN6ZnA4b1d4MkQvdjliOXZuUktGb0V2MlpOWDl2RzMvL05qeTkwQWxDSDBKanAzbTNzZnRuN1ZyTS9GNDdySi90a0hoeU95bGp4RTBUUHpuYmFVTFR4UGcrajVFeWF6aE1GUzMvOWdxdHlQd2Rhdjl4MzFsSjdaWVJ0aC9ldWkrVHFUcW9mMG5rRzFLRiswL0FUWEhtZHJEOVQwQ3FSSklzbitjQWpiQS9qSFVmWStkcHpheXFkeEZwK0g2WHZYSGFIdzkxRy8vV21vK3lDYjdWeDlYZ254cy8rcGx4WlcvbjdmWnZ4YkttdzQweXY1VkhkaWg2TWtpTHpFM0ZaWXN1S0dDek1HcEZWQW1SM0JwVVZsbVdXSU9sTThka2wrU21PT1RtcGRla2dFVjRuTE1TU3h5clNoSnpTdUJKYXZ3MU16MERCaVB3eWsxTWRzak5URUZ5bWYzS00xTkxTb3Rocm5BTFRXM3RBaHVmR1pTSnRDR29tSzRQRmR3ZG1sT1RuaG1DdHhDOXVDUzFLSzhVdlFVemxtVVg2NEg4dzRvTFRKQlVoZ29UWUlVTXY5SFMvMWNLWWtsaVhwcFJVQXRrQnlBWWh4N2ZrRkpabjRlMERBbVVQNWtSZFBNV0lRbXdGK2FCN0k4UlRjNW96UXZXOWNFWkFGU0J1S0YwbXhJYkc2SWxTd3doN0hDd2c4WXZKbDVxYkFBeWtsTVNvV0ZQeC9RazJBLzZoVVVaY0lEbkFzb1dxeFhBb29hbUVoeWZnNU1CSks3L3dFQXZDZzNISmNFQUFBPSJ9 -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Sex"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["Survival"],"name":[2],"type":["int"],"align":["right"]},{"label":["TotalLength"],"name":[3],"type":["int"],"align":["right"]},{"label":["AlarExtent"],"name":[4],"type":["int"],"align":["right"]},{"label":["Weight"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["BeakHead"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["Humerus"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["Femur"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["Tibiotarsus"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["SkullWidth"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["Sternum"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"m","2":"1","3":"154","4":"241","5":"24.5","6":"31.2","7":"0.687","8":"0.668","9":"1.022","10":"0.587","11":"0.830","_rn_":"1"},{"1":"m","2":"0","3":"165","4":"240","5":"26.5","6":"31.0","7":"0.738","8":"0.704","9":"1.095","10":"0.606","11":"0.847","_rn_":"2"},{"1":"m","2":"0","3":"160","4":"245","5":"26.1","6":"32.0","7":"0.736","8":"0.709","9":"1.109","10":"0.611","11":"0.842","_rn_":"3"},{"1":"m","2":"1","3":"160","4":"252","5":"26.9","6":"30.8","7":"0.736","8":"0.709","9":"1.180","10":"0.602","11":"0.841","_rn_":"4"},{"1":"m","2":"1","3":"155","4":"243","5":"26.9","6":"30.6","7":"0.733","8":"0.704","9":"1.151","10":"0.602","11":"0.846","_rn_":"5"},{"1":"m","2":"0","3":"161","4":"249","5":"25.6","6":"32.3","7":"0.743","8":"0.718","9":"1.128","10":"0.602","11":"0.828","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10],"total":[11]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
   </script>
 </div>
 <!-- rnb-frame-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShhYmQpXG5cbmBgYCJ9 -->
-<pre class="r"><code>library(abd)
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RyKGRmJFNleClcbmBgYCJ9 -->
+<pre class="r"><code>str(df$Sex)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gbGlicmFyeShhYmQpIDogdGhlcmUgaXMgbm8gcGFja2FnZSBjYWxsZWQg4oCYYWJk4oCZXG4ifQ== -->
-<pre><code>Error in library(abd) : there is no package called ‘abd’</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiIEZhY3RvciB3LyAyIGxldmVscyBcImZcIixcIm1cIjogMiAyIDIgMiAyIDIgMiAyIDIgMiAuLi5cbiJ9 -->
+<pre><code> Factor w/ 2 levels &quot;f&quot;,&quot;m&quot;: 2 2 2 2 2 2 2 2 2 2 ...</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RyKGRmJFN1cnZpdmFsKVxuYGBgIn0= -->
+<pre class="r"><code>str(df$Survival)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIGludCBbMToxMzZdIDEgMCAwIDEgMSAwIDEgMCAxIDAgLi4uXG4ifQ== -->
+<pre><code> int [1:136] 1 0 0 1 1 0 1 0 1 0 ...</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB1bml2YXJpYWJsZSBhbmFseXNpc1xubG9nLnNleCAgICAgICAgICA9IGdsbShTdXJ2aXZhbCB+IFNleCAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZilcbmxvZy5sZW4gICAgICAgICAgPSBnbG0oU3Vydml2YWwgfiBUb3RhbExlbmd0aCAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZilcbmxvZy5hbGFyICAgICAgICAgPSBnbG0oU3Vydml2YWwgfiBBbGFyRXh0ZW50ICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKVxubG9nLndlaWdodCAgICAgICA9IGdsbShTdXJ2aXZhbCB+IFdlaWdodCAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZilcbmxvZy5iZWFrICAgICAgICAgPSBnbG0oU3Vydml2YWwgfiBCZWFrSGVhZCAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZilcbmxvZy5odW1lcnVzICAgICAgPSBnbG0oU3Vydml2YWwgfiBIdW1lcnVzICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKVxubG9nLmZlbXVyICAgICAgICA9IGdsbShTdXJ2aXZhbCB+IEZlbXVyICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKVxubG9nLnRpYmlvdGFyc3VzICA9IGdsbShTdXJ2aXZhbCB+IFRpYmlvdGFyc3VzICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKVxubG9nLnNrdWxsICAgICAgICA9IGdsbShTdXJ2aXZhbCB+IFNrdWxsV2lkdGggLCBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gbG9naXQpLGRhdGE9ZGYpXG5sb2cuc3Rlcm51bSAgICAgID0gZ2xtKFN1cnZpdmFsIH4gU3Rlcm51bSAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZilcblxuc3VtbWFyeShsb2cuc2V4KVxuc3VtbWFyeShsb2cubGVuKSAgXG5zdW1tYXJ5KGxvZy5hbGFyKVxuc3VtbWFyeShsb2cud2VpZ2h0KVxuc3VtbWFyeShsb2cuYmVhaylcbnN1bW1hcnkobG9nLmh1bWVydXMpXG5zdW1tYXJ5KGxvZy5mZW11cilcbnN1bW1hcnkobG9nLnRpYmlvdGFyc3VzKVxuc3VtbWFyeShsb2cuc2t1bGwpXG5zdW1tYXJ5KGxvZy5zdGVybnVtKVxuXG4jIFNleCAgICAgICAgIDAuMzE5MCAwLjA3ODYgKlxuIyBMZW4gICAgICAgICAwLjAwNDMyIDAuMDA0NDkgKipcbiMgQWxhciAgICAgICAgMC40NDEgMC40MzIgXG4jIFdlaWdodCAgICAgIDAuMDEzMyAwLjAxNDYgKipcbiMgQmVhayAgICAgICAgMC40NDkgMC40NDBcbiMgSHVtZXJ1cyAgICAgMC4wMzYzIDAuMDM0NCAqKlxuIyBGZW11ciAgICAgICAwLjEyMSAwLjExNiAqKlxuIyBUaWJpb3RhcnN1cyAwLjE4MyAwLjE3NSAqKlxuIyBTa3VsbCAgICAgICAwLjY5NSAwLjY4M1xuIyBTdGVybnVtICAgICAwLjEyMSAwLjExNCAqKlxuXG4jIGxlbiwgd2VpZ2h0LCBodW1lcnVzLCBmZW11ciwgdGliaW90YXJzdXMsIHN0ZXJudW1cbmBgYCJ9 -->
-<pre class="r"><code># univariable analysis
-log.sex          = glm(Survival ~ Sex , family = binomial(link = logit),data=df)
-log.len          = glm(Survival ~ TotalLength , family = binomial(link = logit),data=df)
-log.alar         = glm(Survival ~ AlarExtent , family = binomial(link = logit),data=df)
-log.weight       = glm(Survival ~ Weight , family = binomial(link = logit),data=df)
-log.beak         = glm(Survival ~ BeakHead , family = binomial(link = logit),data=df)
-log.humerus      = glm(Survival ~ Humerus , family = binomial(link = logit),data=df)
-log.femur        = glm(Survival ~ Femur , family = binomial(link = logit),data=df)
-log.tibiotarsus  = glm(Survival ~ Tibiotarsus , family = binomial(link = logit),data=df)
-log.skull        = glm(Survival ~ SkullWidth , family = binomial(link = logit),data=df)
-log.sternum      = glm(Survival ~ Sternum , family = binomial(link = logit),data=df)
-
-summary(log.sex)
-summary(log.len)  
-summary(log.alar)
-summary(log.weight)
-summary(log.beak)
-summary(log.humerus)
-summary(log.femur)
-summary(log.tibiotarsus)
-summary(log.skull)
-summary(log.sternum)
-
-# Sex         0.3190 0.0786 *
-# Len         0.00432 0.00449 **
-# Alar        0.441 0.432 
-# Weight      0.0133 0.0146 **
-# Beak        0.449 0.440
-# Humerus     0.0363 0.0344 **
-# Femur       0.121 0.116 **
-# Tibiotarsus 0.183 0.175 **
-# Skull       0.695 0.683
-# Sternum     0.121 0.114 **
-
-# len, weight, humerus, femur, tibiotarsus, sternum</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGFibGUuc2V4X3N1cnZpdmFsID0geHRhYnMofiBkZiRTZXggKyBkZiRTdXJ2aXZhbClcbnRhYmxlLnNleF9zdXJ2aXZhbCA9IGFzLm1hdHJpeCh0YWJsZS5zZXhfc3Vydml2YWwpXG5zdW1tYXJ5KHRhYmxlLnNleF9zdXJ2aXZhbClcbmBgYCJ9 -->
+<pre class="r"><code>table.sex_survival = xtabs(~ df$Sex + df$Survival)
+table.sex_survival = as.matrix(table.sex_survival)
+summary(table.sex_survival)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucm91bmQocmVzLCAyKVxuXG5gYGAifQ== -->
-<pre class="r"><code>round(res, 2)
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgVG90YWxMZW5ndGggQWxhckV4dGVudCBXZWlnaHQgQmVha0hlYWQgSHVtZXJ1cyBGZW11ciBUaWJpb3RhcnN1cyBTa3VsbFdpZHRoIFN0ZXJudW1cblRvdGFsTGVuZ3RoICAgICAgICAxLjAwICAgICAgIDAuNjkgICAwLjU4ICAgICAwLjQ3ICAgIDAuNDggIDAuNDQgICAgICAgIDAuMzggICAgICAgMC40NCAgICAwLjUwXG5BbGFyRXh0ZW50ICAgICAgICAgMC42OSAgICAgICAxLjAwICAgMC41NyAgICAgMC41MCAgICAwLjY4ICAwLjU4ICAgICAgICAwLjUzICAgICAgIDAuNDMgICAgMC41OFxuV2VpZ2h0ICAgICAgICAgICAgIDAuNTggICAgICAgMC41NyAgIDEuMDAgICAgIDAuNTIgICAgMC41MiAgMC40NCAgICAgICAgMC40NSAgICAgICAwLjQ3ICAgIDAuNTFcbkJlYWtIZWFkICAgICAgICAgICAwLjQ3ICAgICAgIDAuNTAgICAwLjUyICAgICAxLjAwICAgIDAuNjIgIDAuNjIgICAgICAgIDAuNTggICAgICAgMC41MyAgICAwLjQ5XG5IdW1lcnVzICAgICAgICAgICAgMC40OCAgICAgICAwLjY4ICAgMC41MiAgICAgMC42MiAgICAxLjAwICAwLjgyICAgICAgICAwLjc1ICAgICAgIDAuNTEgICAgMC41NVxuRmVtdXIgICAgICAgICAgICAgIDAuNDQgICAgICAgMC41OCAgIDAuNDQgICAgIDAuNjIgICAgMC44MiAgMS4wMCAgICAgICAgMC44MSAgICAgICAwLjUyICAgIDAuNDVcblRpYmlvdGFyc3VzICAgICAgICAwLjM4ICAgICAgIDAuNTMgICAwLjQ1ICAgICAwLjU4ICAgIDAuNzUgIDAuODEgICAgICAgIDEuMDAgICAgICAgMC40NiAgICAwLjM4XG5Ta3VsbFdpZHRoICAgICAgICAgMC40NCAgICAgICAwLjQzICAgMC40NyAgICAgMC41MyAgICAwLjUxICAwLjUyICAgICAgICAwLjQ2ICAgICAgIDEuMDAgICAgMC4zOFxuU3Rlcm51bSAgICAgICAgICAgIDAuNTAgICAgICAgMC41OCAgIDAuNTEgICAgIDAuNDkgICAgMC41NSAgMC40NSAgICAgICAgMC4zOCAgICAgICAwLjM4ICAgIDEuMDBcbiJ9 -->
-<pre><code>            TotalLength AlarExtent Weight BeakHead Humerus Femur Tibiotarsus SkullWidth Sternum
-TotalLength        1.00       0.69   0.58     0.47    0.48  0.44        0.38       0.44    0.50
-AlarExtent         0.69       1.00   0.57     0.50    0.68  0.58        0.53       0.43    0.58
-Weight             0.58       0.57   1.00     0.52    0.52  0.44        0.45       0.47    0.51
-BeakHead           0.47       0.50   0.52     1.00    0.62  0.62        0.58       0.53    0.49
-Humerus            0.48       0.68   0.52     0.62    1.00  0.82        0.75       0.51    0.55
-Femur              0.44       0.58   0.44     0.62    0.82  1.00        0.81       0.52    0.45
-Tibiotarsus        0.38       0.53   0.45     0.58    0.75  0.81        1.00       0.46    0.38
-SkullWidth         0.44       0.43   0.47     0.53    0.51  0.52        0.46       1.00    0.38
-Sternum            0.50       0.58   0.51     0.49    0.55  0.45        0.38       0.38    1.00</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiQ2FsbDogeHRhYnMoZm9ybXVsYSA9IH5kZiRTZXggKyBkZiRTdXJ2aXZhbClcbk51bWJlciBvZiBjYXNlcyBpbiB0YWJsZTogMTM2IFxuTnVtYmVyIG9mIGZhY3RvcnM6IDIgXG5UZXN0IGZvciBpbmRlcGVuZGVuY2Ugb2YgYWxsIGZhY3RvcnM6XG5cdENoaXNxID0gMy4xMjY0LCBkZiA9IDEsIHAtdmFsdWUgPSAwLjA3NzAzXG4ifQ== -->
+<pre><code>Call: xtabs(formula = ~df$Sex + df$Survival)
+Number of cases in table: 136 
+Number of factors: 2 
+Test for independence of all factors:
+    Chisq = 3.1264, df = 1, p-value = 0.07703</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI3NleCBpbnRlcmFjdGlvbiBvbiBtZWFzdXJlbWVudHNcbmBgYCJ9 -->
-<pre class="r"><code>#sex interaction on measurements</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubG9nLmZ1bGwgPSBnbG0oU3Vydml2YWwgfiAuICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKVxuc3VtbWFyeShsb2cuZnVsbClcblxuYGBgIn0= -->
-<pre class="r"><code>log.full = glm(Survival ~ . , family = binomial(link = logit),data=df)
-summary(log.full)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShsb2cuYmVhaylcblxuYGBgIn0= -->
+<pre class="r"><code>summary(log.beak)
 </code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IC4sIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksIFxuICAgIGRhdGEgPSBkZilcblxuRGV2aWFuY2UgUmVzaWR1YWxzOiBcbiAgICBNaW4gICAgICAgMVEgICBNZWRpYW4gICAgICAgM1EgICAgICBNYXggIFxuLTIuMTE0MSAgLTAuODAwOCAgIDAuMjAwNiAgIDAuNzgyMiAgIDIuMzA5MyAgXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgIEVzdGltYXRlIFN0ZC4gRXJyb3IgeiB2YWx1ZSBQcig+fHp8KSAgICBcbihJbnRlcmNlcHQpIDEwLjgzNTczICAgMTQuOTMxNTcgICAwLjcyNiAwLjQ2ODAyNyAgICBcblNleG0gICAgICAgICAxLjY0MjU1ICAgIDAuNjU4OTkgICAyLjQ5MyAwLjAxMjY4NCAqICBcblRvdGFsTGVuZ3RoIC0wLjQzNDAyICAgIDAuMTA4NTEgIC00LjAwMCA2LjM0ZS0wNSAqKipcbkFsYXJFeHRlbnQgICAwLjAyNjY2ICAgIDAuMDgxMTkgICAwLjMyOCAwLjc0MjY1MSAgICBcbldlaWdodCAgICAgIC0wLjg2NDk3ICAgIDAuMjQyNTQgIC0zLjU2NiAwLjAwMDM2MiAqKipcbkJlYWtIZWFkICAgICAwLjQ4NjI5ICAgIDAuNDYwNjEgICAxLjA1NiAwLjI5MTA4MyAgICBcbkh1bWVydXMgICAgIDQwLjg1MzY5ICAgMjIuMjU3OTYgICAxLjgzNSAwLjA2NjQzNyAuICBcbkZlbXVyICAgICAgIC0yLjcyNjg2ICAgMjEuNTc3NzIgIC0wLjEyNiAwLjg5OTQzNiAgICBcblRpYmlvdGFyc3VzICA2Ljg5MTU1ICAgIDkuOTYwNjIgICAwLjY5MiAwLjQ4OTAxMyAgICBcblNrdWxsV2lkdGggIDEzLjc0MzQ0ICAgMTguOTM5MzUgICAwLjcyNiAwLjQ2ODA1MCAgICBcblN0ZXJudW0gICAgIDE2LjI1NjMxICAgIDguMzI0MzAgICAxLjk1MyAwLjA1MDgzNCAuICBcbi0tLVxuU2lnbmlmLiBjb2RlczogIDAg4oCYKioq4oCZIDAuMDAxIOKAmCoq4oCZIDAuMDEg4oCYKuKAmSAwLjA1IOKAmC7igJkgMC4xIOKAmCDigJkgMVxuXG4oRGlzcGVyc2lvbiBwYXJhbWV0ZXIgZm9yIGJpbm9taWFsIGZhbWlseSB0YWtlbiB0byBiZSAxKVxuXG4gICAgTnVsbCBkZXZpYW5jZTogMTg4LjA3ICBvbiAxMzUgIGRlZ3JlZXMgb2YgZnJlZWRvbVxuUmVzaWR1YWwgZGV2aWFuY2U6IDEzMC4yMSAgb24gMTI1ICBkZWdyZWVzIG9mIGZyZWVkb21cbkFJQzogMTUyLjIxXG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiA1XG4ifQ== -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IEJlYWtIZWFkLCBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gbG9naXQpLCBcbiAgICBkYXRhID0gZGYpXG5cbkRldmlhbmNlIFJlc2lkdWFsczogXG4gICBNaW4gICAgICAxUSAgTWVkaWFuICAgICAgM1EgICAgIE1heCAgXG4tMS4zODEgIC0xLjIyMiAgIDEuMDU1ICAgMS4xMjYgICAxLjI3MiAgXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgIEVzdGltYXRlIFN0ZC4gRXJyb3IgeiB2YWx1ZSBQcig+fHp8KVxuKEludGVyY2VwdCkgIC01LjkwMDQgICAgIDcuNzkyNCAgLTAuNzU3ICAgIDAuNDQ5XG5CZWFrSGVhZCAgICAgIDAuMTkwNiAgICAgMC4yNDY4ICAgMC43NzIgICAgMC40NDBcblxuKERpc3BlcnNpb24gcGFyYW1ldGVyIGZvciBiaW5vbWlhbCBmYW1pbHkgdGFrZW4gdG8gYmUgMSlcblxuICAgIE51bGwgZGV2aWFuY2U6IDE4OC4wNyAgb24gMTM1ICBkZWdyZWVzIG9mIGZyZWVkb21cblJlc2lkdWFsIGRldmlhbmNlOiAxODcuNDcgIG9uIDEzNCAgZGVncmVlcyBvZiBmcmVlZG9tXG5BSUM6IDE5MS40N1xuXG5OdW1iZXIgb2YgRmlzaGVyIFNjb3JpbmcgaXRlcmF0aW9uczogM1xuIn0= -->
 <pre><code>
 Call:
-glm(formula = Survival ~ ., family = binomial(link = logit), 
+glm(formula = Survival ~ BeakHead, family = binomial(link = logit), 
+    data = df)
+
+Deviance Residuals: 
+   Min      1Q  Median      3Q     Max  
+-1.381  -1.222   1.055   1.126   1.272  
+
+Coefficients:
+            Estimate Std. Error z value Pr(&gt;|z|)
+(Intercept)  -5.9004     7.7924  -0.757    0.449
+BeakHead      0.1906     0.2468   0.772    0.440
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 188.07  on 135  degrees of freedom
+Residual deviance: 187.47  on 134  degrees of freedom
+AIC: 191.47
+
+Number of Fisher Scoring iterations: 3</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShsb2cuYmVhazEpXG5cbmBgYCJ9 -->
+<pre class="r"><code>summary(log.beak1)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IEJlYWtIZWFkICsgU2t1bGxXaWR0aCArIEJlYWtIZWFkOlNrdWxsV2lkdGgsIFxuICAgIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksIGRhdGEgPSBkZilcblxuRGV2aWFuY2UgUmVzaWR1YWxzOiBcbiAgICBNaW4gICAgICAgMVEgICBNZWRpYW4gICAgICAgM1EgICAgICBNYXggIFxuLTEuNDI5OCAgLTEuMjcwNCAgIDAuOTg3NyAgIDEuMDg2MCAgIDEuNDE4MSAgXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgICAgICAgICAgRXN0aW1hdGUgU3RkLiBFcnJvciB6IHZhbHVlIFByKD58enwpXG4oSW50ZXJjZXB0KSAgICAgICAgIC00NjAuNDU4ICAgIDI4OC41NDggIC0xLjU5NiAgICAwLjExMVxuQmVha0hlYWQgICAgICAgICAgICAgIDE0LjU4MiAgICAgIDkuMTI4ICAgMS41OTcgICAgMC4xMTBcblNrdWxsV2lkdGggICAgICAgICAgIDc1Ni45MTUgICAgNDgwLjYxNiAgIDEuNTc1ICAgIDAuMTE1XG5CZWFrSGVhZDpTa3VsbFdpZHRoICAtMjMuOTU4ICAgICAxNS4xOTMgIC0xLjU3NyAgICAwLjExNVxuXG4oRGlzcGVyc2lvbiBwYXJhbWV0ZXIgZm9yIGJpbm9taWFsIGZhbWlseSB0YWtlbiB0byBiZSAxKVxuXG4gICAgTnVsbCBkZXZpYW5jZTogMTg4LjA3ICBvbiAxMzUgIGRlZ3JlZXMgb2YgZnJlZWRvbVxuUmVzaWR1YWwgZGV2aWFuY2U6IDE4NC43NCAgb24gMTMyICBkZWdyZWVzIG9mIGZyZWVkb21cbkFJQzogMTkyLjc0XG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiA0XG4ifQ== -->
+<pre><code>
+Call:
+glm(formula = Survival ~ BeakHead + SkullWidth + BeakHead:SkullWidth, 
+    family = binomial(link = logit), data = df)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.4298  -1.2704   0.9877   1.0860   1.4181  
+
+Coefficients:
+                    Estimate Std. Error z value Pr(&gt;|z|)
+(Intercept)         -460.458    288.548  -1.596    0.111
+BeakHead              14.582      9.128   1.597    0.110
+SkullWidth           756.915    480.616   1.575    0.115
+BeakHead:SkullWidth  -23.958     15.193  -1.577    0.115
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 188.07  on 135  degrees of freedom
+Residual deviance: 184.74  on 132  degrees of freedom
+AIC: 192.74
+
+Number of Fisher Scoring iterations: 4</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-plot-begin eyJoZWlnaHQiOjQzMi42MzI5LCJ3aWR0aCI6NzAwLCJzaXplX2JlaGF2aW9yIjowLCJjb25kaXRpb25zIjpbXX0= -->
+<p><img src="data:image/png;base64,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" /></p>
+<!-- rnb-plot-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShsb2cuZnVsbClcblxuYGBgIn0= -->
+<pre class="r"><code>summary(log.full)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IC4gKyBTZXg6VG90YWxMZW5ndGggKyBTZXg6QmVha0hlYWQgKyBcbiAgICBTZXg6SHVtZXJ1cyArIFNleDpTdGVybnVtICsgRmVtdXI6SHVtZXJ1cyArIFRpYmlvdGFyc3VzOkh1bWVydXMgKyBcbiAgICBBbGFyRXh0ZW50OldlaWdodCArIEJlYWtIZWFkOlNrdWxsV2lkdGgsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksIFxuICAgIGRhdGEgPSBkZilcblxuRGV2aWFuY2UgUmVzaWR1YWxzOiBcbiAgICBNaW4gICAgICAgMVEgICBNZWRpYW4gICAgICAgM1EgICAgICBNYXggIFxuLTIuMDk5MSAgLTAuNzQzMCAgIDAuMTEzMiAgIDAuODI4OCAgIDIuMTMwNiAgXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgICAgICAgICAgICBFc3RpbWF0ZSBTdGQuIEVycm9yIHogdmFsdWUgUHIoPnx6fCkgIFxuKEludGVyY2VwdCkgICAgICAgICAgMy4yODNlKzAwICA0LjE4OGUrMDIgICAwLjAwOCAgIDAuOTkzNyAgXG5TZXhtICAgICAgICAgICAgICAgICAzLjk2OGUrMDEgIDIuOTgwZSswMSAgIDEuMzMyICAgMC4xODMwICBcblRvdGFsTGVuZ3RoICAgICAgICAgLTEuNTc2ZS0wMSAgMS40NzZlLTAxICAtMS4wNjggICAwLjI4NTcgIFxuQWxhckV4dGVudCAgICAgICAgICAgMi4zMDBlLTAyICA5Ljg0MmUtMDEgICAwLjAyMyAgIDAuOTgxNCAgXG5XZWlnaHQgICAgICAgICAgICAgIC04Ljc5OGUtMDEgIDkuNTM5ZSswMCAgLTAuMDkyICAgMC45MjY1ICBcbkJlYWtIZWFkICAgICAgICAgICAgIDEuNzc1ZSswMCAgMS40NzJlKzAxICAgMC4xMjEgICAwLjkwNDAgIFxuSHVtZXJ1cyAgICAgICAgICAgICAtNi4wMDZlKzAxICAzLjEzMGUrMDIgIC0wLjE5MiAgIDAuODQ3OCAgXG5GZW11ciAgICAgICAgICAgICAgIC0yLjA4NWUrMDIgIDUuMjMyZSswMiAgLTAuMzk4ICAgMC42OTAzICBcblRpYmlvdGFyc3VzICAgICAgICAgIDguNDcxZSswMSAgMi41NjVlKzAyICAgMC4zMzAgICAwLjc0MTIgIFxuU2t1bGxXaWR0aCAgICAgICAgICAgMS4wODRlKzAyICA3LjcyMGUrMDIgICAwLjE0MCAgIDAuODg4MyAgXG5TdGVybnVtICAgICAgICAgICAgICA3LjE5N2UrMDAgIDEuMjY0ZSswMSAgIDAuNTY5ICAgMC41NjkwICBcblNleG06VG90YWxMZW5ndGggICAgLTUuNDg1ZS0wMSAgMi4yODllLTAxICAtMi4zOTcgICAwLjAxNjUgKlxuU2V4bTpCZWFrSGVhZCAgICAgICAgNS4yODllLTAxICA5LjM3NWUtMDEgICAwLjU2NCAgIDAuNTcyNyAgXG5TZXhtOkh1bWVydXMgICAgICAgICAyLjQ2OGUrMDEgIDMuMzQ1ZSswMSAgIDAuNzM4ICAgMC40NjA2ICBcblNleG06U3Rlcm51bSAgICAgICAgIDEuNzU4ZSswMSAgMS43MTNlKzAxICAgMS4wMjYgICAwLjMwNDkgIFxuSHVtZXJ1czpGZW11ciAgICAgICAgMi44OTJlKzAyICA3LjE4OGUrMDIgICAwLjQwMiAgIDAuNjg3NSAgXG5IdW1lcnVzOlRpYmlvdGFyc3VzIC0xLjA2MmUrMDIgIDMuNTU4ZSswMiAgLTAuMjk4ICAgMC43NjU0ICBcbkFsYXJFeHRlbnQ6V2VpZ2h0ICAgIDguNTgzZS0wNSAgMy44NzllLTAyICAgMC4wMDIgICAwLjk5ODIgIFxuQmVha0hlYWQ6U2t1bGxXaWR0aCAtMi45NTZlKzAwICAyLjQ1MmUrMDEgIC0wLjEyMSAgIDAuOTA0MSAgXG4tLS1cblNpZ25pZi4gY29kZXM6ICAwIOKAmCoqKuKAmSAwLjAwMSDigJgqKuKAmSAwLjAxIOKAmCrigJkgMC4wNSDigJgu4oCZIDAuMSDigJgg4oCZIDFcblxuKERpc3BlcnNpb24gcGFyYW1ldGVyIGZvciBiaW5vbWlhbCBmYW1pbHkgdGFrZW4gdG8gYmUgMSlcblxuICAgIE51bGwgZGV2aWFuY2U6IDE4OC4wNyAgb24gMTM1ICBkZWdyZWVzIG9mIGZyZWVkb21cblJlc2lkdWFsIGRldmlhbmNlOiAxMjMuNjQgIG9uIDExNyAgZGVncmVlcyBvZiBmcmVlZG9tXG5BSUM6IDE2MS42NFxuXG5OdW1iZXIgb2YgRmlzaGVyIFNjb3JpbmcgaXRlcmF0aW9uczogNlxuIn0= -->
+<pre><code>
+Call:
+glm(formula = Survival ~ . + Sex:TotalLength + Sex:BeakHead + 
+    Sex:Humerus + Sex:Sternum + Femur:Humerus + Tibiotarsus:Humerus + 
+    AlarExtent:Weight + BeakHead:SkullWidth, family = binomial(link = logit), 
     data = df)
 
 Deviance Residuals: 
     Min       1Q   Median       3Q      Max  
--2.1141  -0.8008   0.2006   0.7822   2.3093  
+-2.0991  -0.7430   0.1132   0.8288   2.1306  
 
 Coefficients:
-            Estimate Std. Error z value Pr(&gt;|z|)    
-(Intercept) 10.83573   14.93157   0.726 0.468027    
-Sexm         1.64255    0.65899   2.493 0.012684 *  
-TotalLength -0.43402    0.10851  -4.000 6.34e-05 ***
-AlarExtent   0.02666    0.08119   0.328 0.742651    
-Weight      -0.86497    0.24254  -3.566 0.000362 ***
-BeakHead     0.48629    0.46061   1.056 0.291083    
-Humerus     40.85369   22.25796   1.835 0.066437 .  
-Femur       -2.72686   21.57772  -0.126 0.899436    
-Tibiotarsus  6.89155    9.96062   0.692 0.489013    
-SkullWidth  13.74344   18.93935   0.726 0.468050    
-Sternum     16.25631    8.32430   1.953 0.050834 .  
+                      Estimate Std. Error z value Pr(&gt;|z|)  
+(Intercept)          3.283e+00  4.188e+02   0.008   0.9937  
+Sexm                 3.968e+01  2.980e+01   1.332   0.1830  
+TotalLength         -1.576e-01  1.476e-01  -1.068   0.2857  
+AlarExtent           2.300e-02  9.842e-01   0.023   0.9814  
+Weight              -8.798e-01  9.539e+00  -0.092   0.9265  
+BeakHead             1.775e+00  1.472e+01   0.121   0.9040  
+Humerus             -6.006e+01  3.130e+02  -0.192   0.8478  
+Femur               -2.085e+02  5.232e+02  -0.398   0.6903  
+Tibiotarsus          8.471e+01  2.565e+02   0.330   0.7412  
+SkullWidth           1.084e+02  7.720e+02   0.140   0.8883  
+Sternum              7.197e+00  1.264e+01   0.569   0.5690  
+Sexm:TotalLength    -5.485e-01  2.289e-01  -2.397   0.0165 *
+Sexm:BeakHead        5.289e-01  9.375e-01   0.564   0.5727  
+Sexm:Humerus         2.468e+01  3.345e+01   0.738   0.4606  
+Sexm:Sternum         1.758e+01  1.713e+01   1.026   0.3049  
+Humerus:Femur        2.892e+02  7.188e+02   0.402   0.6875  
+Humerus:Tibiotarsus -1.062e+02  3.558e+02  -0.298   0.7654  
+AlarExtent:Weight    8.583e-05  3.879e-02   0.002   0.9982  
+BeakHead:SkullWidth -2.956e+00  2.452e+01  -0.121   0.9041  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 (Dispersion parameter for binomial family taken to be 1)
 
     Null deviance: 188.07  on 135  degrees of freedom
-Residual deviance: 130.21  on 125  degrees of freedom
-AIC: 152.21
+Residual deviance: 123.64  on 117  degrees of freedom
+AIC: 161.64
 
-Number of Fisher Scoring iterations: 5</code></pre>
+Number of Fisher Scoring iterations: 6</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubG9nLnN0ZXAgPSBsb2cuZnVsbCAlPiUgc3RlcEFJQyh0cmFjZSA9IEZBTFNFKVxuc3VtbWFyeShsb2cuc3RlcClcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubG9nLnN0ZXAgPSBsb2cuZnVsbCAlPiUgc3RlcEFJQyh0cmFjZSA9IEZBTFNFKVxubG9nLnN0ZXAgPSBsb2cuZnVsbCAlPiUgc3RlcEFJQyh0cmFjZSA9IEZBTFNFKVxuc3VtbWFyeShsb2cuc3RlcClcblxuYGBgIn0= -->
 <pre class="r"><code>log.step = log.full %&gt;% stepAIC(trace = FALSE)
-summary(log.step)</code></pre>
+log.step = log.full %&gt;% stepAIC(trace = FALSE)
+summary(log.step)
+</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IFNleCArIFRvdGFsTGVuZ3RoICsgV2VpZ2h0ICsgQmVha0hlYWQgKyBcbiAgICBIdW1lcnVzICsgU3Rlcm51bSwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSwgZGF0YSA9IGRmKVxuXG5EZXZpYW5jZSBSZXNpZHVhbHM6IFxuICAgIE1pbiAgICAgICAxUSAgIE1lZGlhbiAgICAgICAzUSAgICAgIE1heCAgXG4tMS45MzgyICAtMC43OTQyICAgMC4yMDI4ICAgMC43ODY3ICAgMi40Mzc1ICBcblxuQ29lZmZpY2llbnRzOlxuICAgICAgICAgICAgRXN0aW1hdGUgU3RkLiBFcnJvciB6IHZhbHVlIFByKD58enwpICAgIFxuKEludGVyY2VwdCkgIDE1Ljg1OTAgICAgMTEuODk1MyAgIDEuMzMzIDAuMTgyNDYzICAgIFxuU2V4bSAgICAgICAgICAxLjU5NTggICAgIDAuNTI4MiAgIDMuMDIxIDAuMDAyNTE4ICoqIFxuVG90YWxMZW5ndGggIC0wLjQxNzkgICAgIDAuMTAxNCAgLTQuMTE5ICAzLjhlLTA1ICoqKlxuV2VpZ2h0ICAgICAgIC0wLjgyNTkgICAgIDAuMjM0OCAgLTMuNTE4IDAuMDAwNDM1ICoqKlxuQmVha0hlYWQgICAgICAwLjYxMDcgICAgIDAuNDI3MSAgIDEuNDMwIDAuMTUyNzU1ICAgIFxuSHVtZXJ1cyAgICAgIDUxLjQwNDYgICAgMTQuODI5OCAgIDMuNDY2IDAuMDAwNTI4ICoqKlxuU3Rlcm51bSAgICAgIDE2LjgxODUgICAgIDguMTgwOCAgIDIuMDU2IDAuMDM5Nzk4ICogIFxuLS0tXG5TaWduaWYuIGNvZGVzOiAgMCDigJgqKirigJkgMC4wMDEg4oCYKirigJkgMC4wMSDigJgq4oCZIDAuMDUg4oCYLuKAmSAwLjEg4oCYIOKAmSAxXG5cbihEaXNwZXJzaW9uIHBhcmFtZXRlciBmb3IgYmlub21pYWwgZmFtaWx5IHRha2VuIHRvIGJlIDEpXG5cbiAgICBOdWxsIGRldmlhbmNlOiAxODguMDcgIG9uIDEzNSAgZGVncmVlcyBvZiBmcmVlZG9tXG5SZXNpZHVhbCBkZXZpYW5jZTogMTMxLjU3ICBvbiAxMjkgIGRlZ3JlZXMgb2YgZnJlZWRvbVxuQUlDOiAxNDUuNTdcblxuTnVtYmVyIG9mIEZpc2hlciBTY29yaW5nIGl0ZXJhdGlvbnM6IDVcbiJ9 -->
-<pre><code>
-Call:
-glm(formula = Survival ~ Sex + TotalLength + Weight + BeakHead + 
-    Humerus + Sternum, family = binomial(link = logit), data = df)
-
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.9382  -0.7942   0.2028   0.7867   2.4375  
-
-Coefficients:
-            Estimate Std. Error z value Pr(&gt;|z|)    
-(Intercept)  15.8590    11.8953   1.333 0.182463    
-Sexm          1.5958     0.5282   3.021 0.002518 ** 
-TotalLength  -0.4179     0.1014  -4.119  3.8e-05 ***
-Weight       -0.8259     0.2348  -3.518 0.000435 ***
-BeakHead      0.6107     0.4271   1.430 0.152755    
-Humerus      51.4046    14.8298   3.466 0.000528 ***
-Sternum      16.8185     8.1808   2.056 0.039798 *  
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 188.07  on 135  degrees of freedom
-Residual deviance: 131.57  on 129  degrees of freedom
-AIC: 145.57
-
-Number of Fisher Scoring iterations: 5</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubG9nLnJlbW92ZSA9IGdsbShmb3JtdWxhID0gU3Vydml2YWwgfiBTZXggKyBUb3RhbExlbmd0aCArIFdlaWdodCArIEZlbXVyICsgVGliaW90YXJzdXMgK1xuICAgIEh1bWVydXMgKyBTdGVybnVtLCBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gbG9naXQpLCBkYXRhID0gZGYpXG5sb2cucmVtb3ZlMSA9IGxvZy5yZW1vdmUgJT4lIHN0ZXBBSUModHJhY2UgPSBGQUxTRSlcbnN1bW1hcnkobG9nLnJlbW92ZTEpXG5gYGAifQ== -->
-<pre class="r"><code>log.remove = glm(formula = Survival ~ Sex + TotalLength + Weight + Femur + Tibiotarsus +
-    Humerus + Sternum, family = binomial(link = logit), data = df)
-log.remove1 = log.remove %&gt;% stepAIC(trace = FALSE)
-summary(log.remove1)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IFNleCArIFRvdGFsTGVuZ3RoICsgV2VpZ2h0ICsgSHVtZXJ1cyArIFxuICAgIFN0ZXJudW0sIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksIGRhdGEgPSBkZilcblxuRGV2aWFuY2UgUmVzaWR1YWxzOiBcbiAgICBNaW4gICAgICAgMVEgICBNZWRpYW4gICAgICAgM1EgICAgICBNYXggIFxuLTIuMDM3NiAgLTAuNzk0OCAgIDAuMjQwOSAgIDAuNzgxMCAgIDIuNTE3MiAgXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgIEVzdGltYXRlIFN0ZC4gRXJyb3IgeiB2YWx1ZSBQcig+fHp8KSAgICBcbihJbnRlcmNlcHQpIDIyLjkyOTc5ICAgMTAuODM5MjggICAyLjExNSAgMC4wMzQzOSAqICBcblNleG0gICAgICAgICAxLjQ1NTM4ICAgIDAuNTEwMTYgICAyLjg1MyAgMC4wMDQzMyAqKiBcblRvdGFsTGVuZ3RoIC0wLjM4MTQwICAgIDAuMDk0OTMgIC00LjAxOCA1Ljg4ZS0wNSAqKipcbldlaWdodCAgICAgIC0wLjc1MjQ5ICAgIDAuMjI1MTMgIC0zLjM0MiAgMC4wMDA4MyAqKipcbkh1bWVydXMgICAgIDU2LjQ5OTA0ICAgMTQuMjk0MzAgICAzLjk1MyA3LjczZS0wNSAqKipcblN0ZXJudW0gICAgIDE3LjgzNDc0ICAgIDguMDAxMDUgICAyLjIyOSAgMC4wMjU4MSAqICBcbi0tLVxuU2lnbmlmLiBjb2RlczogIDAg4oCYKioq4oCZIDAuMDAxIOKAmCoq4oCZIDAuMDEg4oCYKuKAmSAwLjA1IOKAmC7igJkgMC4xIOKAmCDigJkgMVxuXG4oRGlzcGVyc2lvbiBwYXJhbWV0ZXIgZm9yIGJpbm9taWFsIGZhbWlseSB0YWtlbiB0byBiZSAxKVxuXG4gICAgTnVsbCBkZXZpYW5jZTogMTg4LjA3ICBvbiAxMzUgIGRlZ3JlZXMgb2YgZnJlZWRvbVxuUmVzaWR1YWwgZGV2aWFuY2U6IDEzMy42NCAgb24gMTMwICBkZWdyZWVzIG9mIGZyZWVkb21cbkFJQzogMTQ1LjY0XG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiA1XG4ifQ== -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IFNleCArIFRvdGFsTGVuZ3RoICsgV2VpZ2h0ICsgSHVtZXJ1cyArIFxuICAgIFN0ZXJudW0gKyBTZXg6VG90YWxMZW5ndGggKyBTZXg6U3Rlcm51bSwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSwgXG4gICAgZGF0YSA9IGRmKVxuXG5EZXZpYW5jZSBSZXNpZHVhbHM6IFxuICAgIE1pbiAgICAgICAxUSAgIE1lZGlhbiAgICAgICAzUSAgICAgIE1heCAgXG4tMi4wOTA1ICAtMC43OTA0ICAgMC4xNjIyICAgMC44MDQwICAgMi4zNTU1ICBcblxuQ29lZmZpY2llbnRzOlxuICAgICAgICAgICAgICAgICBFc3RpbWF0ZSBTdGQuIEVycm9yIHogdmFsdWUgUHIoPnx6fCkgICAgXG4oSW50ZXJjZXB0KSAgICAgICAgMi4wMDIyICAgIDE0LjU0MTQgICAwLjEzOCAwLjg5MDQ4NCAgICBcblNleG0gICAgICAgICAgICAgIDQ1LjI3ODcgICAgMjIuOTk3NSAgIDEuOTY5IDAuMDQ4OTcwICogIFxuVG90YWxMZW5ndGggICAgICAgLTAuMTg1MSAgICAgMC4xMjE0ICAtMS41MjUgMC4xMjcyNzEgICAgXG5XZWlnaHQgICAgICAgICAgICAtMC43Njg3ICAgICAwLjIzMDggIC0zLjMzMSAwLjAwMDg2NiAqKipcbkh1bWVydXMgICAgICAgICAgIDU5LjExMTQgICAgMTQuOTgxNCAgIDMuOTQ2IDcuOTZlLTA1ICoqKlxuU3Rlcm51bSAgICAgICAgICAgIDMuNzgwNiAgICAxMS43NzcwICAgMC4zMjEgMC43NDgyMDEgICAgXG5TZXhtOlRvdGFsTGVuZ3RoICAtMC4zOTg3ICAgICAwLjE3ODYgIC0yLjIzMyAwLjAyNTU2MyAqICBcblNleG06U3Rlcm51bSAgICAgIDIzLjY3MzcgICAgMTUuNjgxNSAgIDEuNTEwIDAuMTMxMTMxICAgIFxuLS0tXG5TaWduaWYuIGNvZGVzOiAgMCDigJgqKirigJkgMC4wMDEg4oCYKirigJkgMC4wMSDigJgq4oCZIDAuMDUg4oCYLuKAmSAwLjEg4oCYIOKAmSAxXG5cbihEaXNwZXJzaW9uIHBhcmFtZXRlciBmb3IgYmlub21pYWwgZmFtaWx5IHRha2VuIHRvIGJlIDEpXG5cbiAgICBOdWxsIGRldmlhbmNlOiAxODguMDcgIG9uIDEzNSAgZGVncmVlcyBvZiBmcmVlZG9tXG5SZXNpZHVhbCBkZXZpYW5jZTogMTI4LjI4ICBvbiAxMjggIGRlZ3JlZXMgb2YgZnJlZWRvbVxuQUlDOiAxNDQuMjhcblxuTnVtYmVyIG9mIEZpc2hlciBTY29yaW5nIGl0ZXJhdGlvbnM6IDVcbiJ9 -->
 <pre><code>
 Call:
 glm(formula = Survival ~ Sex + TotalLength + Weight + Humerus + 
-    Sternum, family = binomial(link = logit), data = df)
+    Sternum + Sex:TotalLength + Sex:Sternum, family = binomial(link = logit), 
+    data = df)
 
 Deviance Residuals: 
     Min       1Q   Median       3Q      Max  
--2.0376  -0.7948   0.2409   0.7810   2.5172  
+-2.0905  -0.7904   0.1622   0.8040   2.3555  
 
 Coefficients:
-            Estimate Std. Error z value Pr(&gt;|z|)    
-(Intercept) 22.92979   10.83928   2.115  0.03439 *  
-Sexm         1.45538    0.51016   2.853  0.00433 ** 
-TotalLength -0.38140    0.09493  -4.018 5.88e-05 ***
-Weight      -0.75249    0.22513  -3.342  0.00083 ***
-Humerus     56.49904   14.29430   3.953 7.73e-05 ***
-Sternum     17.83474    8.00105   2.229  0.02581 *  
+                 Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)        2.0022    14.5414   0.138 0.890484    
+Sexm              45.2787    22.9975   1.969 0.048970 *  
+TotalLength       -0.1851     0.1214  -1.525 0.127271    
+Weight            -0.7687     0.2308  -3.331 0.000866 ***
+Humerus           59.1114    14.9814   3.946 7.96e-05 ***
+Sternum            3.7806    11.7770   0.321 0.748201    
+Sexm:TotalLength  -0.3987     0.1786  -2.233 0.025563 *  
+Sexm:Sternum      23.6737    15.6815   1.510 0.131131    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 (Dispersion parameter for binomial family taken to be 1)
 
     Null deviance: 188.07  on 135  degrees of freedom
-Residual deviance: 133.64  on 130  degrees of freedom
-AIC: 145.64
-
-Number of Fisher Scoring iterations: 5</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubG9nLnN0ZXAxID0gZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IFNleCArIFRvdGFsTGVuZ3RoICsgV2VpZ2h0ICsgXG4gICAgSHVtZXJ1cyArIFN0ZXJudW0sIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksIGRhdGEgPSBkZilcbnN1bW1hcnkobG9nLnN0ZXAxKVxuYGBgIn0= -->
-<pre class="r"><code>log.step1 = glm(formula = Survival ~ Sex + TotalLength + Weight + 
-    Humerus + Sternum, family = binomial(link = logit), data = df)
-summary(log.step1)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IFNleCArIFRvdGFsTGVuZ3RoICsgV2VpZ2h0ICsgSHVtZXJ1cyArIFxuICAgIFN0ZXJudW0sIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksIGRhdGEgPSBkZilcblxuRGV2aWFuY2UgUmVzaWR1YWxzOiBcbiAgICBNaW4gICAgICAgMVEgICBNZWRpYW4gICAgICAgM1EgICAgICBNYXggIFxuLTIuMDM3NiAgLTAuNzk0OCAgIDAuMjQwOSAgIDAuNzgxMCAgIDIuNTE3MiAgXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgIEVzdGltYXRlIFN0ZC4gRXJyb3IgeiB2YWx1ZSBQcig+fHp8KSAgICBcbihJbnRlcmNlcHQpIDIyLjkyOTc5ICAgMTAuODM5MjggICAyLjExNSAgMC4wMzQzOSAqICBcblNleG0gICAgICAgICAxLjQ1NTM4ICAgIDAuNTEwMTYgICAyLjg1MyAgMC4wMDQzMyAqKiBcblRvdGFsTGVuZ3RoIC0wLjM4MTQwICAgIDAuMDk0OTMgIC00LjAxOCA1Ljg4ZS0wNSAqKipcbldlaWdodCAgICAgIC0wLjc1MjQ5ICAgIDAuMjI1MTMgIC0zLjM0MiAgMC4wMDA4MyAqKipcbkh1bWVydXMgICAgIDU2LjQ5OTA0ICAgMTQuMjk0MzAgICAzLjk1MyA3LjczZS0wNSAqKipcblN0ZXJudW0gICAgIDE3LjgzNDc0ICAgIDguMDAxMDUgICAyLjIyOSAgMC4wMjU4MSAqICBcbi0tLVxuU2lnbmlmLiBjb2RlczogIDAg4oCYKioq4oCZIDAuMDAxIOKAmCoq4oCZIDAuMDEg4oCYKuKAmSAwLjA1IOKAmC7igJkgMC4xIOKAmCDigJkgMVxuXG4oRGlzcGVyc2lvbiBwYXJhbWV0ZXIgZm9yIGJpbm9taWFsIGZhbWlseSB0YWtlbiB0byBiZSAxKVxuXG4gICAgTnVsbCBkZXZpYW5jZTogMTg4LjA3ICBvbiAxMzUgIGRlZ3JlZXMgb2YgZnJlZWRvbVxuUmVzaWR1YWwgZGV2aWFuY2U6IDEzMy42NCAgb24gMTMwICBkZWdyZWVzIG9mIGZyZWVkb21cbkFJQzogMTQ1LjY0XG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiA1XG4ifQ== -->
-<pre><code>
-Call:
-glm(formula = Survival ~ Sex + TotalLength + Weight + Humerus + 
-    Sternum, family = binomial(link = logit), data = df)
-
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--2.0376  -0.7948   0.2409   0.7810   2.5172  
-
-Coefficients:
-            Estimate Std. Error z value Pr(&gt;|z|)    
-(Intercept) 22.92979   10.83928   2.115  0.03439 *  
-Sexm         1.45538    0.51016   2.853  0.00433 ** 
-TotalLength -0.38140    0.09493  -4.018 5.88e-05 ***
-Weight      -0.75249    0.22513  -3.342  0.00083 ***
-Humerus     56.49904   14.29430   3.953 7.73e-05 ***
-Sternum     17.83474    8.00105   2.229  0.02581 *  
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 188.07  on 135  degrees of freedom
-Residual deviance: 133.64  on 130  degrees of freedom
-AIC: 145.64
+Residual deviance: 128.28  on 128  degrees of freedom
+AIC: 144.28
 
 Number of Fisher Scoring iterations: 5</code></pre>
 <!-- rnb-output-end -->
@@ -513,7 +478,7 @@ Number of Fisher Scoring iterations: 5</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KYGBge3J9DQpybShsaXN0ID0gbHMoKSkNCmxpYnJhcnkodGlkeXZlcnNlKQ0KbGlicmFyeShnZ3Bsb3QyKQ0KbGlicmFyeShsbXRlc3QpDQpsaWJyYXJ5KEhtaXNjKQ0KbGlicmFyeShNQVNTKQ0KbGlicmFyeShkcGx5cikNCmBgYA0KDQpgYGB7cn0NCnJtKGxpc3QgPSBscygpKQ0KZGYgPSByZWFkLnRhYmxlKCIuLi9kYXRhL2J1bXB1cy50eHQiLCBoZWFkZXIgPSBUUlVFLCBzZXAgPSAiXHQiKQ0KZGYgPC0gc3Vic2V0KGRmLCBzZWxlY3QgPSAtYyhJRCkpDQpkZiRTdXJ2aXZhbCA8LSBhcy5pbnRlZ2VyKGRmJFN1cnZpdmFsKQ0KZGYkU2V4IDwtIGFzLmZhY3RvcihkZiRTZXgpDQpgYGANCg0KYGBge3J9DQpzdW1tYXJ5KGRmKQ0KaGVhZChkZikNCmBgYA0KDQpgYGB7cn0NCnh0YWJzKH4gZGYkU3Vydml2YWwgKyBkZiRTZXgpDQpvZGRzLnJhdGlvKGRmJFN1cnZpdmFsICsgZGYkU2V4KQ0KYGBgDQoNCmBgYHtyfQ0KIyB1bml2YXJpYWJsZSBhbmFseXNpcw0KbG9nLnNleCAgICAgICAgICA9IGdsbShTdXJ2aXZhbCB+IFNleCAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZikNCmxvZy5sZW4gICAgICAgICAgPSBnbG0oU3Vydml2YWwgfiBUb3RhbExlbmd0aCAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZikNCmxvZy5hbGFyICAgICAgICAgPSBnbG0oU3Vydml2YWwgfiBBbGFyRXh0ZW50ICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKQ0KbG9nLndlaWdodCAgICAgICA9IGdsbShTdXJ2aXZhbCB+IFdlaWdodCAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZikNCmxvZy5iZWFrICAgICAgICAgPSBnbG0oU3Vydml2YWwgfiBCZWFrSGVhZCAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZikNCmxvZy5odW1lcnVzICAgICAgPSBnbG0oU3Vydml2YWwgfiBIdW1lcnVzICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKQ0KbG9nLmZlbXVyICAgICAgICA9IGdsbShTdXJ2aXZhbCB+IEZlbXVyICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKQ0KbG9nLnRpYmlvdGFyc3VzICA9IGdsbShTdXJ2aXZhbCB+IFRpYmlvdGFyc3VzICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKQ0KbG9nLnNrdWxsICAgICAgICA9IGdsbShTdXJ2aXZhbCB+IFNrdWxsV2lkdGggLCBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gbG9naXQpLGRhdGE9ZGYpDQpsb2cuc3Rlcm51bSAgICAgID0gZ2xtKFN1cnZpdmFsIH4gU3Rlcm51bSAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZikNCg0Kc3VtbWFyeShsb2cuc2V4KQ0Kc3VtbWFyeShsb2cubGVuKSAgDQpzdW1tYXJ5KGxvZy5hbGFyKQ0Kc3VtbWFyeShsb2cud2VpZ2h0KQ0Kc3VtbWFyeShsb2cuYmVhaykNCnN1bW1hcnkobG9nLmh1bWVydXMpDQpzdW1tYXJ5KGxvZy5mZW11cikNCnN1bW1hcnkobG9nLnRpYmlvdGFyc3VzKQ0Kc3VtbWFyeShsb2cuc2t1bGwpDQpzdW1tYXJ5KGxvZy5zdGVybnVtKQ0KDQojIFNleCAgICAgICAgIDAuMzE5MCAwLjA3ODYgKg0KIyBMZW4gICAgICAgICAwLjAwNDMyIDAuMDA0NDkgKioNCiMgQWxhciAgICAgICAgMC40NDEgMC40MzIgDQojIFdlaWdodCAgICAgIDAuMDEzMyAwLjAxNDYgKioNCiMgQmVhayAgICAgICAgMC40NDkgMC40NDANCiMgSHVtZXJ1cyAgICAgMC4wMzYzIDAuMDM0NCAqKg0KIyBGZW11ciAgICAgICAwLjEyMSAwLjExNiAqKg0KIyBUaWJpb3RhcnN1cyAwLjE4MyAwLjE3NSAqKg0KIyBTa3VsbCAgICAgICAwLjY5NSAwLjY4Mw0KIyBTdGVybnVtICAgICAwLjEyMSAwLjExNCAqKg0KDQojIGxlbiwgd2VpZ2h0LCBodW1lcnVzLCBmZW11ciwgdGliaW90YXJzdXMsIHN0ZXJudW0NCmBgYA0KDQpgYGB7cn0NCiNmaW5kIGNvcnJlbGF0ZWQgZmFjdG9ycw0KZGYuY29yIDwtIHN1YnNldChkZiwgc2VsZWN0ID0gLWMoU3Vydml2YWwsIFNleCkpDQpyZXMgPC0gY29yKGRmLmNvcikNCnJvdW5kKHJlcywgMikNCg0KcGxvdChkZiRBbGFyRXh0ZW50LCBkZiRUb3RhbExlbmd0aCkNCnBsb3QoZGYkRmVtdXIsIGRmJEh1bWVydXMpDQpwbG90KGRmJEZlbXVyLCBkZiRUaWJpb3RhcnN1cykNCnBsb3QoZGYkSHVtZXJ1cywgZGYkVGliaW90YXJzdXMpDQoNCiMgYWJvdmUgcD0wLjcNCiMjIGFsYXItbGVuZ3RoIDAuNjksIGZlbXVyLWh1bWVydXMgMC44MiwgZmVtdXItdGliaW90YXJzdXMgMC44MSwgaHVtZXJ1cy10aWJpb3RhcnN1cyAwLjc1DQpgYGANCg0KYGBge3J9DQojc2V4IGludGVyYWN0aW9uIG9uIG1lYXN1cmVtZW50cw0KYGBgDQoNCmBgYHtyfQ0KbG9nLmZ1bGwgPSBnbG0oU3Vydml2YWwgfiAuICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKQ0Kc3VtbWFyeShsb2cuZnVsbCkNCmBgYA0KDQoNCmBgYHtyfQ0KbG9nLnN0ZXAgPSBsb2cuZnVsbCAlPiUgc3RlcEFJQyh0cmFjZSA9IEZBTFNFKQ0Kc3VtbWFyeShsb2cuc3RlcCkNCg0KbG9nLnN0ZXAxID0gZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IFNleCArIFRvdGFsTGVuZ3RoICsgV2VpZ2h0ICsgDQogICAgSHVtZXJ1cyArIFN0ZXJudW0sIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksIGRhdGEgPSBkZikNCnN1bW1hcnkobG9nLnN0ZXAxKQ0KYGBgDQoNCmBgYHtyfQ0KI1RvIGFzc2VzcyB0aGUgc3RhdGlzdGljYWwgc2lnbmlmaWNhbmNlIG9mIGVhY2ggdGVybSwgd2UgaGF2ZSB0byBhc2sgZHJvcHRlcm0oKSB0byBwZXJmb3JtIGEgc2lnbmlmaWNhbmNlDQojdGVzdCBhcyB3ZWxsLiBUaGUgYXBwcm9wcmlhdGUgdGVzdCBoZXJlIGlzIGEgz4cNCiMyDQojdGVzdCAobGlrZWxpaG9vZCByYXRpbyB0ZXN0KToNCmBgYA==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KYGBge3J9DQpybShsaXN0ID0gbHMoKSkNCmxpYnJhcnkodGlkeXZlcnNlKQ0KbGlicmFyeShnZ3Bsb3QyKQ0KbGlicmFyeShsbXRlc3QpDQpsaWJyYXJ5KEhtaXNjKQ0KbGlicmFyeShNQVNTKQ0KbGlicmFyeShkcGx5cikNCmBgYA0KDQpgYGB7cn0NCnJtKGxpc3QgPSBscygpKQ0KZGYgPSByZWFkLnRhYmxlKCIuLi9kYXRhL2J1bXB1cy50eHQiLCBoZWFkZXIgPSBUUlVFLCBzZXAgPSAiXHQiKQ0KZGYgPC0gc3Vic2V0KGRmLCBzZWxlY3QgPSAtYyhJRCkpDQpzdW1tYXJ5KGRmKQ0KZGYkU3Vydml2YWwgPC0gYXMuaW50ZWdlcihkZiRTdXJ2aXZhbCkNCmRmJFNleCA8LSBhcy5mYWN0b3IoZGYkU2V4KQ0KYGBgDQoNCmBgYHtyfQ0Kc3VtbWFyeShkZikNCmhlYWQoZGYpDQpzdHIoZGYkU2V4KQ0Kc3RyKGRmJFN1cnZpdmFsKQ0KYGBgDQoNCmBgYHtyfQ0KdGFibGUuc2V4X3N1cnZpdmFsID0geHRhYnMofiBkZiRTZXggKyBkZiRTdXJ2aXZhbCkNCnRhYmxlLnNleF9zdXJ2aXZhbCA9IGFzLm1hdHJpeCh0YWJsZS5zZXhfc3Vydml2YWwpDQpzdW1tYXJ5KHRhYmxlLnNleF9zdXJ2aXZhbCkNCmBgYA0KDQpgYGB7cn0NCiMgdW5pdmFyaWFibGUgYW5hbHlzaXMNCmxvZy5zZXggICAgICAgICAgPSBnbG0oU3Vydml2YWwgfiBTZXggLCBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gbG9naXQpLGRhdGE9ZGYpDQpsb2cubGVuICAgICAgICAgID0gZ2xtKFN1cnZpdmFsIH4gVG90YWxMZW5ndGggLCBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gbG9naXQpLGRhdGE9ZGYpDQpsb2cuYWxhciAgICAgICAgID0gZ2xtKFN1cnZpdmFsIH4gQWxhckV4dGVudCAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZikNCmxvZy53ZWlnaHQgICAgICAgPSBnbG0oU3Vydml2YWwgfiBXZWlnaHQgLCBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gbG9naXQpLGRhdGE9ZGYpDQpsb2cuYmVhayAgICAgICAgID0gZ2xtKFN1cnZpdmFsIH4gQmVha0hlYWQgLCBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gbG9naXQpLGRhdGE9ZGYpDQpsb2cuaHVtZXJ1cyAgICAgID0gZ2xtKFN1cnZpdmFsIH4gSHVtZXJ1cyAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZikNCmxvZy5mZW11ciAgICAgICAgPSBnbG0oU3Vydml2YWwgfiBGZW11ciAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZikNCmxvZy50aWJpb3RhcnN1cyAgPSBnbG0oU3Vydml2YWwgfiBUaWJpb3RhcnN1cyAsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZikNCmxvZy5za3VsbCAgICAgICAgPSBnbG0oU3Vydml2YWwgfiBTa3VsbFdpZHRoICwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKQ0KbG9nLnN0ZXJudW0gICAgICA9IGdsbShTdXJ2aXZhbCB+IFN0ZXJudW0gLCBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gbG9naXQpLGRhdGE9ZGYpDQoNCnN1bW1hcnkobG9nLnNleCkNCnN1bW1hcnkobG9nLmxlbikgIA0Kc3VtbWFyeShsb2cuYWxhcikNCnN1bW1hcnkobG9nLndlaWdodCkNCnN1bW1hcnkobG9nLmJlYWspDQpzdW1tYXJ5KGxvZy5odW1lcnVzKQ0Kc3VtbWFyeShsb2cuZmVtdXIpDQpzdW1tYXJ5KGxvZy50aWJpb3RhcnN1cykNCnN1bW1hcnkobG9nLnNrdWxsKQ0Kc3VtbWFyeShsb2cuc3Rlcm51bSkNCg0KIyBTZXggICAgICAgICAwLjMxOTAgMC4wNzg2ICoNCiMgTGVuICAgICAgICAgMC4wMDQzMiAwLjAwNDQ5ICoqDQojIEFsYXIgICAgICAgIDAuNDQxIDAuNDMyIA0KIyBXZWlnaHQgICAgICAwLjAxMzMgMC4wMTQ2ICoqDQojIEJlYWsgICAgICAgIDAuNDQ5IDAuNDQwDQojIEh1bWVydXMgICAgIDAuMDM2MyAwLjAzNDQgKioNCiMgRmVtdXIgICAgICAgMC4xMjEgMC4xMTYgKioNCiMgVGliaW90YXJzdXMgMC4xODMgMC4xNzUgKioNCiMgU2t1bGwgICAgICAgMC42OTUgMC42ODMNCiMgU3Rlcm51bSAgICAgMC4xMjEgMC4xMTQgKioNCg0KIyBsZW4sIHdlaWdodCwgaHVtZXJ1cywgZmVtdXIsIHRpYmlvdGFyc3VzLCBzdGVybnVtDQpgYGANCg0KYGBge3J9DQojc2V4IGludGVyYWN0aW9uIG9uIG1lYXN1cmVtZW50cw0KbG9nLnNleDEgPSBnbG0oU3Vydml2YWwgfiBTZXggKyBUb3RhbExlbmd0aCArIFNleDpUb3RhbExlbmd0aCwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKQ0KbG9nLnNleDIgPSBnbG0oU3Vydml2YWwgfiBTZXggKyBBbGFyRXh0ZW50ICsgU2V4OkFsYXJFeHRlbnQsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZikNCmxvZy5zZXgzID0gZ2xtKFN1cnZpdmFsIH4gU2V4ICsgV2VpZ2h0ICsgU2V4OldlaWdodCwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKQ0KbG9nLnNleDQgPSBnbG0oU3Vydml2YWwgfiBTZXggKyBCZWFrSGVhZCArIFNleDpCZWFrSGVhZCwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKQ0KbG9nLnNleDUgPSBnbG0oU3Vydml2YWwgfiBTZXggKyBIdW1lcnVzICsgU2V4Okh1bWVydXMsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZikNCmxvZy5zZXg2ID0gZ2xtKFN1cnZpdmFsIH4gU2V4ICsgRmVtdXIgKyBTZXg6RmVtdXIsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZikNCmxvZy5zZXg3ID0gZ2xtKFN1cnZpdmFsIH4gU2V4ICsgVGliaW90YXJzdXMgKyBTZXg6VGliaW90YXJzdXMsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZikNCmxvZy5zZXg4ID0gZ2xtKFN1cnZpdmFsIH4gU2V4ICsgU2t1bGxXaWR0aCArIFNleDpTa3VsbFdpZHRoLCBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gbG9naXQpLGRhdGE9ZGYpDQpsb2cuc2V4OSA9IGdsbShTdXJ2aXZhbCB+IFNleCArIFN0ZXJudW0gKyBTZXg6U3Rlcm51bSwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKQ0KDQpzdW1tYXJ5KGxvZy5zZXgxKQ0Kc3VtbWFyeShsb2cuc2V4MikNCnN1bW1hcnkobG9nLnNleDMpDQpzdW1tYXJ5KGxvZy5zZXg0KQ0Kc3VtbWFyeShsb2cuc2V4NSkNCnN1bW1hcnkobG9nLnNleDYpDQpzdW1tYXJ5KGxvZy5zZXg3KQ0Kc3VtbWFyeShsb2cuc2V4OCkNCnN1bW1hcnkobG9nLnNleDkpDQoNCmxvZy5mZW11cjEgPSBnbG0oU3Vydml2YWwgfiBGZW11ciArIFRpYmlvdGFyc3VzICsgRmVtdXI6VGliaW90YXJzdXMsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZikNCmxvZy5mZW11cjIgPSBnbG0oU3Vydml2YWwgfiBGZW11ciArIEh1bWVydXMgKyBGZW11cjpIdW1lcnVzLCBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gbG9naXQpLGRhdGE9ZGYpDQpsb2cuaHVtZXJ1czEgPSBnbG0oU3Vydml2YWwgfiBUaWJpb3RhcnN1cyArIEh1bWVydXMgKyBUaWJpb3RhcnN1czpIdW1lcnVzLCBmYW1pbHkgPSBiaW5vbWlhbChsaW5rID0gbG9naXQpLGRhdGE9ZGYpDQpsb2cuYWxhcjEgPSBnbG0oU3Vydml2YWwgfiBBbGFyRXh0ZW50ICsgV2VpZ2h0ICsgQWxhckV4dGVudDpXZWlnaHQsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZikNCmxvZy5iZWFrMSA9IGdsbShTdXJ2aXZhbCB+IEJlYWtIZWFkICsgU2t1bGxXaWR0aCArIEJlYWtIZWFkOlNrdWxsV2lkdGgsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksZGF0YT1kZikNCg0Kc3VtbWFyeShsb2cuZmVtdXIxKQ0Kc3VtbWFyeShsb2cuZmVtdXIyKQ0Kc3VtbWFyeShsb2cuaHVtZXJ1czEpDQpzdW1tYXJ5KGxvZy5hbGFyMSkNCnN1bW1hcnkobG9nLmJlYWsxKQ0KDQojbG9naXQoXHBpX3tpfSkgPSBcYWxwaGEgKyBcYmV0YV97MX1TZXhfe2l9ICsgXGJldGFfezJ9TWVhc3VyZW1lbnRfe2l9ICsgXGJldGFfezN9U2V4X3tpfSpNZWFzdXJlbWVudF97aX0NCg0KYGBgDQoNCmBgYHtyfQ0KI2ZpbmQgY29ycmVsYXRlZCBmYWN0b3JzDQpkZi5jb3IgPC0gc3Vic2V0KGRmLCBzZWxlY3QgPSAtYyhTdXJ2aXZhbCwgU2V4KSkNCnJlcyA8LSBjb3IoZGYuY29yKQ0Kcm91bmQocmVzLCAyKQ0KDQpwbG90KGRmJEFsYXJFeHRlbnQsIGRmJFRvdGFsTGVuZ3RoKQ0KcGxvdChkZiRGZW11ciwgZGYkSHVtZXJ1cykNCnBsb3QoZGYkRmVtdXIsIGRmJFRpYmlvdGFyc3VzKQ0KcGxvdChkZiRIdW1lcnVzLCBkZiRUaWJpb3RhcnN1cykNCg0KIyBhYm92ZSByPTAuNw0KIyMgYWxhci1sZW5ndGggMC42OSwgZmVtdXItaHVtZXJ1cyAwLjgyLCBmZW11ci10aWJpb3RhcnN1cyAwLjgxLCBodW1lcnVzLXRpYmlvdGFyc3VzIDAuNzUNCmBgYA0KDQpgYGB7cn0NCmxvZy5mdWxsID0gZ2xtKFN1cnZpdmFsIH4gLiArIFNleDpUb3RhbExlbmd0aCArIFNleDpCZWFrSGVhZCArIFNleDpIdW1lcnVzICsgU2V4OlN0ZXJudW0gKyBGZW11cjpIdW1lcnVzICsgVGliaW90YXJzdXM6SHVtZXJ1cyArIEFsYXJFeHRlbnQ6V2VpZ2h0ICsgQmVha0hlYWQ6U2t1bGxXaWR0aCwgZmFtaWx5ID0gYmlub21pYWwobGluayA9IGxvZ2l0KSxkYXRhPWRmKQ0Kc3VtbWFyeShsb2cuZnVsbCkNCmBgYA0KDQoNCmBgYHtyfQ0KbG9nLnN0ZXAgPSBsb2cuZnVsbCAlPiUgc3RlcEFJQyh0cmFjZSA9IEZBTFNFKQ0Kc3VtbWFyeShsb2cuc3RlcCkNCg0KbG9nLnN0ZXAxID0gZ2xtKGZvcm11bGEgPSBTdXJ2aXZhbCB+IFNleCArIFRvdGFsTGVuZ3RoICsgV2VpZ2h0ICsgSHVtZXJ1cyArIA0KICAgIFN0ZXJudW0gKyBTZXg6VG90YWxMZW5ndGgsIGZhbWlseSA9IGJpbm9taWFsKGxpbmsgPSBsb2dpdCksIA0KICAgIGRhdGEgPSBkZikNCnN1bW1hcnkobG9nLnN0ZXAxKQ0KYGBgDQoNCmBgYHtyfQ0KI1RvIGFzc2VzcyB0aGUgc3RhdGlzdGljYWwgc2lnbmlmaWNhbmNlIG9mIGVhY2ggdGVybSwgd2UgaGF2ZSB0byBhc2sgZHJvcHRlcm0oKSB0byBwZXJmb3JtIGEgc2lnbmlmaWNhbmNlDQojdGVzdCBhcyB3ZWxsLiBUaGUgYXBwcm9wcmlhdGUgdGVzdCBoZXJlIGlzIGEgz4cNCiMyDQojdGVzdCAobGlrZWxpaG9vZCByYXRpbyB0ZXN0KToNCmBgYA==</div>
 
 
 

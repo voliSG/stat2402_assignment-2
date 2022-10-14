@@ -16,6 +16,7 @@ library(dplyr)
 rm(list = ls())
 df = read.table("../data/bumpus.txt", header = TRUE, sep = "\t")
 df <- subset(df, select = -c(ID))
+summary(df)
 df$Survival <- as.integer(df$Survival)
 df$Sex <- as.factor(df$Sex)
 ```
@@ -23,11 +24,14 @@ df$Sex <- as.factor(df$Sex)
 ```{r}
 summary(df)
 head(df)
+str(df$Sex)
+str(df$Survival)
 ```
 
 ```{r}
-xtabs(~ df$Survival + df$Sex)
-odds.ratio(df$Survival + df$Sex)
+table.sex_survival = xtabs(~ df$Sex + df$Survival)
+table.sex_survival = as.matrix(table.sex_survival)
+summary(table.sex_survival)
 ```
 
 ```{r}
@@ -69,6 +73,44 @@ summary(log.sternum)
 ```
 
 ```{r}
+#sex interaction on measurements
+log.sex1 = glm(Survival ~ Sex + TotalLength + Sex:TotalLength, family = binomial(link = logit),data=df)
+log.sex2 = glm(Survival ~ Sex + AlarExtent + Sex:AlarExtent, family = binomial(link = logit),data=df)
+log.sex3 = glm(Survival ~ Sex + Weight + Sex:Weight, family = binomial(link = logit),data=df)
+log.sex4 = glm(Survival ~ Sex + BeakHead + Sex:BeakHead, family = binomial(link = logit),data=df)
+log.sex5 = glm(Survival ~ Sex + Humerus + Sex:Humerus, family = binomial(link = logit),data=df)
+log.sex6 = glm(Survival ~ Sex + Femur + Sex:Femur, family = binomial(link = logit),data=df)
+log.sex7 = glm(Survival ~ Sex + Tibiotarsus + Sex:Tibiotarsus, family = binomial(link = logit),data=df)
+log.sex8 = glm(Survival ~ Sex + SkullWidth + Sex:SkullWidth, family = binomial(link = logit),data=df)
+log.sex9 = glm(Survival ~ Sex + Sternum + Sex:Sternum, family = binomial(link = logit),data=df)
+
+summary(log.sex1)
+summary(log.sex2)
+summary(log.sex3)
+summary(log.sex4)
+summary(log.sex5)
+summary(log.sex6)
+summary(log.sex7)
+summary(log.sex8)
+summary(log.sex9)
+
+log.femur1 = glm(Survival ~ Femur + Tibiotarsus + Femur:Tibiotarsus, family = binomial(link = logit),data=df)
+log.femur2 = glm(Survival ~ Femur + Humerus + Femur:Humerus, family = binomial(link = logit),data=df)
+log.humerus1 = glm(Survival ~ Tibiotarsus + Humerus + Tibiotarsus:Humerus, family = binomial(link = logit),data=df)
+log.alar1 = glm(Survival ~ AlarExtent + Weight + AlarExtent:Weight, family = binomial(link = logit),data=df)
+log.beak1 = glm(Survival ~ BeakHead + SkullWidth + BeakHead:SkullWidth, family = binomial(link = logit),data=df)
+
+summary(log.femur1)
+summary(log.femur2)
+summary(log.humerus1)
+summary(log.alar1)
+summary(log.beak1)
+
+#logit(\pi_{i}) = \alpha + \beta_{1}Sex_{i} + \beta_{2}Measurement_{i} + \beta_{3}Sex_{i}*Measurement_{i}
+
+```
+
+```{r}
 #find correlated factors
 df.cor <- subset(df, select = -c(Survival, Sex))
 res <- cor(df.cor)
@@ -79,16 +121,12 @@ plot(df$Femur, df$Humerus)
 plot(df$Femur, df$Tibiotarsus)
 plot(df$Humerus, df$Tibiotarsus)
 
-# above p=0.7
+# above r=0.7
 ## alar-length 0.69, femur-humerus 0.82, femur-tibiotarsus 0.81, humerus-tibiotarsus 0.75
 ```
 
 ```{r}
-#sex interaction on measurements
-```
-
-```{r}
-log.full = glm(Survival ~ . , family = binomial(link = logit),data=df)
+log.full = glm(Survival ~ . + Sex:TotalLength + Sex:BeakHead + Sex:Humerus + Sex:Sternum + Femur:Humerus + Tibiotarsus:Humerus + AlarExtent:Weight + BeakHead:SkullWidth, family = binomial(link = logit),data=df)
 summary(log.full)
 ```
 
@@ -97,8 +135,9 @@ summary(log.full)
 log.step = log.full %>% stepAIC(trace = FALSE)
 summary(log.step)
 
-log.step1 = glm(formula = Survival ~ Sex + TotalLength + Weight + 
-    Humerus + Sternum, family = binomial(link = logit), data = df)
+log.step1 = glm(formula = Survival ~ Sex + TotalLength + Weight + Humerus + 
+    Sternum + Sex:TotalLength, family = binomial(link = logit), 
+    data = df)
 summary(log.step1)
 ```
 
